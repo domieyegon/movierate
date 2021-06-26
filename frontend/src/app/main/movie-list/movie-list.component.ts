@@ -10,7 +10,7 @@ export class MovieListComponent implements OnInit {
 
   @Input() movies?:IMovie[] = [];
 
-  @Output() selectMovie = new EventEmitter();
+  @Output() selectMovie = new EventEmitter<IMovie>();
 
   constructor() { }
 
