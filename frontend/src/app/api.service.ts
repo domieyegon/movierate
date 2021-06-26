@@ -35,6 +35,11 @@ export class ApiService {
     return this.http.post<IMovie>(`${this.baseUrl}`, body, {headers: this.headers, observe: 'response'})
   }
 
+  updateMovie(id: number, title:string, description:string): Observable<EntityResponseType>{
+    const body = JSON.stringify({id:id,title:title, description:description});
+    return this.http.put<IMovie>(`${this.baseUrl}${id}`, body, {headers: this.headers, observe: 'response'})
+  }
+
   rateMovie(rate:number, movieId:number): Observable<EntityResponseType> {
     const body = JSON.stringify({"stars": rate});
     return this.http.post<IMovie>(`${this.baseUrl}${movieId}/rate_movie/`, body, {headers: this.headers, observe: 'response'})

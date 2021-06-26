@@ -28,11 +28,11 @@ export class MovieDetailsComponent implements OnInit {
   }
 
   rateCLicked(rate:number) {
-    this.apiService.rateMovie(rate, this.movie.id).subscribe((res: HttpResponse<IMovie>)=>(this.getDetails(), console.log(res)));
+    this.apiService.rateMovie(rate, this.movie.id!).subscribe((res: HttpResponse<IMovie>)=>(this.getDetails(), console.log(res)));
   }
 
   getDetails() {
-    this.apiService.getMovie(this.movie.id).subscribe((res: HttpResponse<IMovie>)=>(this.updateMovie.emit(res.body)));
+    this.apiService.getMovie(this.movie.id!).subscribe((res: HttpResponse<IMovie>)=>(this.updateMovie.emit(res.body)));
   }
 
   ngOnInit(): void {}

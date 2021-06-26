@@ -34,9 +34,7 @@ export class MainComponent implements OnInit {
   createNewMovie() {
     this.editedMovie = {
       title:'',
-      description: '',
-      avg_ratings: 0,
-      id: 0
+      description: ''
     }
 
     this.isEditMovie = true;
