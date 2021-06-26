@@ -5,6 +5,7 @@ export interface IMovie {
     no_of_ratings?: number;
     avg_ratings: number;
 }
+
 export class Movie implements IMovie {
     constructor(
         public id: number = 0,
