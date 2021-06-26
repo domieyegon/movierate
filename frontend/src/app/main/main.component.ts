@@ -11,11 +11,16 @@ import { IMovie } from '../model/movie';
 export class MainComponent implements OnInit {
 
   movies?:IMovie[] = [];
-  selectedMovie = null;
+  selectedMovie!:IMovie;
 
   constructor(
     private apiService:ApiService
   ) { }
+
+  selectMovie(movie:IMovie) {
+    this.selectedMovie= movie;
+    console.log('selectedMovie ',this.selectedMovie);
+  }
 
   ngOnInit(): void {
 
