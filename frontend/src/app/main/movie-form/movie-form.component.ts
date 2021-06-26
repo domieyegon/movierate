@@ -1,4 +1,7 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ApiService } from 'src/app/api.service';
 import { IMovie } from 'src/app/model/movie';
 
 @Component({
@@ -8,9 +11,24 @@ import { IMovie } from 'src/app/model/movie';
 })
 export class MovieFormComponent implements OnInit {
 
-  @Input() movie!:IMovie
+  movieForm:any
 
-  constructor() { }
+  @Input() set movie(val:IMovie){
+    this.movieForm = new FormGroup({
+      title: new FormControl(val.title),
+      description: new FormControl(val.description)
+    });
+  }
+
+
+  constructor(
+    private apiService:ApiService
+  ) { }
+
+  saveMovie() {
+    this.apiService.createMovie(this.movieForm.value.title, this.movieForm.value.description).subscribe((res: HttpResponse<IMovie>)=>(console.log(res)));
+    console.log(this.movieForm.value);
+  }
 
   ngOnInit(): void {
   }

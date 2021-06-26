@@ -7,6 +7,7 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { MovieFormComponent } from './movie-form/movie-form.component';
 import {ApiService} from '../api.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes:Routes = [
   {path: 'movies', component:MainComponent}
@@ -22,6 +23,7 @@ const routes:Routes = [
   imports: [
     CommonModule,
     FontAwesomeModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes),
   ],
   exports: [
