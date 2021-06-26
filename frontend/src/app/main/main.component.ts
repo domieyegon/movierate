@@ -62,6 +62,11 @@ export class MainComponent implements OnInit {
     this.apiService.deleteMovie(movie.id!).subscribe((res: HttpResponse<IMovie>) => (this.movies = this.movies.filter(mov => mov.id !== movie.id), console.log(res.body)));
   }
 
+  logout() {
+    this.cookieService.delete('mr-token');
+    this.router.navigate(['/auth']);
+  }
+
   ngOnInit(): void {
 
     const token = this.cookieService.get('mr-token');
