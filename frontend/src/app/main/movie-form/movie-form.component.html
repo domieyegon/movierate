@@ -1,12 +1,13 @@
 <form [formGroup]="movieForm" (ngSubmit)="saveMovie()">
     <label for="title">Title</label><br>
-    <input type="text" formControlName="title"><br><br>
+    <input type="text" placeholder="Enter movie title" formControlName="title"><br><br>
 
 
     <label for="description">Description</label><br>
-    <textarea type="text" formControlName="description"></textarea><br><br>
-
-    <button type="submit">
+    <div class="text-area-wrapper">
+        <textarea type="text" placeholder="Enter movie description" formControlName="description"></textarea><br><br>
+    </div>
+    <button type="submit" [disabled]="formDisabled()">
         <span *ngIf="!id">Create</span>
         <span *ngIf="id">Update</span>
     </button>
