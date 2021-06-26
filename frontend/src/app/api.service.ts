@@ -42,7 +42,7 @@ export class ApiService {
 
   rateMovie(rate:number, movieId:number): Observable<EntityResponseType> {
     const body = JSON.stringify({"stars": rate});
-    return this.http.post<IMovie>(`${this.baseUrl}${movieId}/rate_movie/`, body, {headers: this.headers, observe: 'response'})
+    return this.http.post<IMovie>(`${this.baseUrl}${movieId}/rate_movie/`, body, {headers: this.headers, observe: 'response'});
   }
 
   getMovie(id:number): Observable<EntityResponseType> {
@@ -51,5 +51,9 @@ export class ApiService {
 
   getMovies(): Observable<EntityArrayResponseType> {
     return this.http.get<IMovie[]>(this.baseUrl, {headers:this.headers, observe: 'response'});
+  }
+
+  deleteMovie(id:number): Observable<EntityResponseType> {
+    return this.http.delete<IMovie>(`${this.baseUrl}${id}/`, {headers:this.headers, observe:"response"});
   }
 }

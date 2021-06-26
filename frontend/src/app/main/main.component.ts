@@ -41,7 +41,7 @@ export class MainComponent implements OnInit {
   }
 
   deletedMovie(movie:IMovie) {
-    console.log('delete', movie.title);
+    this.apiService.deleteMovie(movie.id!).subscribe((res: HttpResponse<IMovie>)=>(console.log(res.body)));
   }
 
   ngOnInit(): void {
