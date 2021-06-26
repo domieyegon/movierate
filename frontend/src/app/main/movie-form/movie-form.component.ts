@@ -29,7 +29,16 @@ export class MovieFormComponent implements OnInit {
   ) { }
 
   saveMovie() {
-    this.apiService.createMovie(this.movieForm.value.title, this.movieForm.value.description).subscribe((res: HttpResponse<IMovie>)=>(console.log(res)));
+    if(this.id == undefined){
+      console.log(this.id);
+      console.log("You are adding a new one")
+      this.apiService.createMovie(this.movieForm.value.title, this.movieForm.value.description).subscribe((res: HttpResponse<IMovie>)=>(console.log(res)));
+    }else{
+
+      console.log("You are Updating")
+      this.apiService.updateMovie(this.id!, this.movieForm.value.title, this.movieForm.value.description).subscribe((res: HttpResponse<IMovie>)=>(console.log(res)));
+    }
+    
     console.log(this.movieForm.value);
   }
 

@@ -6,5 +6,8 @@
     <label for="description">Description</label><br>
     <textarea type="text" formControlName="description"></textarea><br><br>
 
-    <button type="submit">Save</button>
+    <button type="submit">
+        <span *ngIf="!id">Create</span>
+        <span *ngIf="id">Update</span>
+    </button>
 </form>
