@@ -1,4 +1,7 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
+import { IMovie } from '../model/movie';
 
 @Component({
   selector: 'app-main',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  movies?:IMovie[] = [];
+  selectedMovie = null;
+
+  constructor(
+    private apiService:ApiService
+  ) { }
 
   ngOnInit(): void {
+
+    this.apiService.getMovies().subscribe((res: HttpResponse<IMovie[]>) => (this.movies = res.body || []));
+    
   }
 
 }
