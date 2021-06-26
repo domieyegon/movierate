@@ -20,16 +20,7 @@ export class MainComponent implements OnInit {
     private apiService: ApiService
   ) { }
 
-  selectMovie(movie: IMovie) {
-    this.selectedMovie = movie;
-    console.log('selectedMovie ', this.selectedMovie);
-    this.isEditMovie = false;
-  }
 
-  editMovie(movie: IMovie) {
-    this.editedMovie = movie;
-    this.isEditMovie = true;
-  }
 
   createNewMovie() {
     this.editedMovie = {
@@ -40,14 +31,35 @@ export class MainComponent implements OnInit {
     this.isEditMovie = true;
   }
 
+  movieCreated(movie:IMovie) {
+    this.movies.push(movie);
+    this.isEditMovie = false;
+  }
+
+  selectMovie(movie: IMovie) {
+    this.selectedMovie = movie;
+    console.log('selectedMovie ', this.selectedMovie);
+    this.isEditMovie = false;
+  }
+
+  editMovie(movie: IMovie) {
+    this.editedMovie = movie;
+    this.isEditMovie = true;
+  }
+  movieUpdated(movie:IMovie) {
+    let index = this.movies.findIndex(mov => mov.id === movie.id);
+    if (index >=0) {
+      this.movies[index] = movie;
+    }
+    this.isEditMovie = false;
+  }
+
   deletedMovie(movie:IMovie) {
-    this.apiService.deleteMovie(movie.id!).subscribe((res: HttpResponse<IMovie>)=>(console.log(res.body)));
+    this.apiService.deleteMovie(movie.id!).subscribe((res: HttpResponse<IMovie>)=>( this.movies = this.movies.filter(mov => mov.id !== movie.id),console.log(res.body)));
   }
 
   ngOnInit(): void {
-
     this.apiService.getMovies().subscribe((res: HttpResponse<IMovie[]>) => (this.movies = res.body || []));
-
   }
 
 }
