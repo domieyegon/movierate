@@ -10,22 +10,46 @@ import { IMovie } from '../model/movie';
 })
 export class MainComponent implements OnInit {
 
-  movies:IMovie[] = [];
-  selectedMovie!:IMovie;
+  movies: IMovie[] = [];
+  selectedMovie!: IMovie;
+  editedMovie!: IMovie;
+
+  isEditMovie: Boolean = false;
 
   constructor(
-    private apiService:ApiService
+    private apiService: ApiService
   ) { }
 
-  selectMovie(movie:IMovie) {
-    this.selectedMovie= movie;
-    console.log('selectedMovie ',this.selectedMovie);
+  selectMovie(movie: IMovie) {
+    this.selectedMovie = movie;
+    console.log('selectedMovie ', this.selectedMovie);
+    this.isEditMovie = false;
+  }
+
+  editMovie(movie: IMovie) {
+    this.editedMovie = movie;
+    this.isEditMovie = true;
+  }
+
+  createNewMovie() {
+    this.editedMovie = {
+      title:'',
+      description: '',
+      avg_ratings: 0,
+      id: 0
+    }
+
+    this.isEditMovie = true;
+  }
+
+  deletedMovie(movie:IMovie) {
+    console.log('delete', movie.title);
   }
 
   ngOnInit(): void {
 
     this.apiService.getMovies().subscribe((res: HttpResponse<IMovie[]>) => (this.movies = res.body || []));
-    
+
   }
 
 }
