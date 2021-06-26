@@ -44,7 +44,7 @@ button:disabled {
     color: #ccc
 }
 
-input[type=text], select, textarea {
+input[type=text],[type=password], select, textarea {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -54,6 +54,8 @@ input[type=text], select, textarea {
     box-sizing: border-box;
     outline: none;
 }
+
+
 
 input[type=submit] {
     width: 100%;

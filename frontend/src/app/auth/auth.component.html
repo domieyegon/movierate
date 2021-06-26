@@ -1,1 +1,9 @@
-<p>auth works!</p>
+<form [formGroup]="authForm" (ngSubmit)="login()">
+    <label for="title">Username</label><br>
+    <input type="text" placeholder="Enter Username" formControlName="username"><br><br>
+
+    <label for="password">Password</label><br>
+    <input type="password" placeholder="Enter Password" formControlName="password"><br><br>
+
+    <button type="submit" [disabled]="formDisabled()">Login</button>
+</form>
