@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AuthComponent } from './auth.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 
 
 const routes:Routes= [
@@ -18,6 +19,9 @@ const routes:Routes= [
     CommonModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
+  ],
+  providers:[
+    CookieService
   ],
   exports: [
     RouterModule

@@ -1,5 +1,7 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from '../api.service';
 import { IMovie } from '../model/movie';
 
@@ -17,21 +19,23 @@ export class MainComponent implements OnInit {
   isEditMovie: Boolean = false;
 
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private cookieService: CookieService,
+    private router: Router
   ) { }
 
 
 
   createNewMovie() {
     this.editedMovie = {
-      title:'',
+      title: '',
       description: ''
     }
 
     this.isEditMovie = true;
   }
 
-  movieCreated(movie:IMovie) {
+  movieCreated(movie: IMovie) {
     this.movies.push(movie);
     this.isEditMovie = false;
   }
@@ -46,20 +50,26 @@ export class MainComponent implements OnInit {
     this.editedMovie = movie;
     this.isEditMovie = true;
   }
-  movieUpdated(movie:IMovie) {
+  movieUpdated(movie: IMovie) {
     let index = this.movies.findIndex(mov => mov.id === movie.id);
-    if (index >=0) {
+    if (index >= 0) {
       this.movies[index] = movie;
     }
     this.isEditMovie = false;
   }
 
-  deletedMovie(movie:IMovie) {
-    this.apiService.deleteMovie(movie.id!).subscribe((res: HttpResponse<IMovie>)=>( this.movies = this.movies.filter(mov => mov.id !== movie.id),console.log(res.body)));
+  deletedMovie(movie: IMovie) {
+    this.apiService.deleteMovie(movie.id!).subscribe((res: HttpResponse<IMovie>) => (this.movies = this.movies.filter(mov => mov.id !== movie.id), console.log(res.body)));
   }
 
   ngOnInit(): void {
-    this.apiService.getMovies().subscribe((res: HttpResponse<IMovie[]>) => (this.movies = res.body || []));
+
+    const token = this.cookieService.get('mr-token');
+    if (!token) {
+      this.router.navigate(['/auth']);
+    } else {
+      this.apiService.getMovies().subscribe((res: HttpResponse<IMovie[]>) => (this.movies = res.body || []));
+    }
   }
 
 }
