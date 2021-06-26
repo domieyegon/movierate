@@ -1,5 +1,5 @@
 export interface IMovie {
-    id?: number;
+    id: number;
     title?: string;
     description?: string;
     no_of_ratings?: number;
@@ -7,10 +7,10 @@ export interface IMovie {
 }
 export class Movie implements IMovie {
     constructor(
-        public id?: number,
+        public id: number = 0,
         public title?: string,
         public description?: string,
         public no_of_ratings?: number,
-        public avg_ratings: number =0,
+        public avg_ratings: number = 0,
     ) { }
 }

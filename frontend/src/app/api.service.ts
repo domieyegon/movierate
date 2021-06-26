@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http'
 import { IMovie } from './model/movie';
 import { Observable } from 'rxjs';
 
+type EntityResponseType = HttpResponse<IMovie>;
 type EntityArrayResponseType = HttpResponse<IMovie[]>;
 
 @Injectable({
@@ -22,14 +23,24 @@ export class ApiService {
   private movies = ['Terminator', 'Preditor'];
 
   constructor(
-    private httpClient:HttpClient
+    private http:HttpClient
     ) { }
 
   // getMovies() {
   //   return this.httpClient.get(this.baseUrl, {headers:this.headers});
   // }
 
+  rateMovie(rate:number, movieId:number): Observable<EntityResponseType> {
+    const body = JSON.stringify({"stars": rate});
+    return this.http.post<IMovie>(`${this.baseUrl}${movieId}/rate_movie/`, body, {headers: this.headers, observe: 'response'})
+  }
+
+
+  getMovie(id:number): Observable<EntityResponseType> {
+    return this.http.get<IMovie>(`${this.baseUrl}${id}/`, {headers:this.headers, observe: 'response'});
+  }
+
   getMovies(): Observable<EntityArrayResponseType> {
-    return this.httpClient.get<IMovie[]>(this.baseUrl, {headers:this.headers, observe: 'response'});
+    return this.http.get<IMovie[]>(this.baseUrl, {headers:this.headers, observe: 'response'});
   }
 }
