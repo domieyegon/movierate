@@ -30,6 +30,15 @@ export class ApiService {
     return this.http.post<ILogin>(`${this.baseUrl}auth/`, body, { headers: headers, observe: 'response' });
   }
 
+  registerUser(userData: ILogin): Observable<HttpResponse<ILogin>> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    const body = JSON.stringify(userData);
+    return this.http.post<ILogin>(`${this.baseUrl}api/users/`, body, { headers: headers, observe: 'response' });
+  }
+
   createMovie(title: string, description: string): Observable<EntityResponseType> {
     const body = JSON.stringify({ title: title, description: description });
     return this.http.post<IMovie>(`${this.baseMovieUrl}`, body, { headers: this.getAuthToken(), observe: 'response' })

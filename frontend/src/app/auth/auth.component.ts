@@ -13,21 +13,29 @@ import { ILogin } from '../model/login';
 })
 export class AuthComponent implements OnInit {
 
+  registerMode = false;
+
   authForm = new FormGroup({
     username: new FormControl(''),
     password: new FormControl('')
   })
 
   constructor(
-    private apiService:ApiService,
+    private apiService: ApiService,
     private cookieService: CookieService,
-    private router:Router
+    private router: Router
   ) { }
 
   login() {
-    this.apiService.loginUser(this.authForm.value).subscribe((res: HttpResponse<ILogin>)=>(this.cookieService.set('mr-token', res.body!.token!), this.router.navigate(['/movies']),console.log(res)));
+    if (!this.registerMode) {
+      this.loginUser()
+    } else {
+      this.apiService.registerUser(this.authForm.value).subscribe((res: HttpResponse<ILogin>) => (this.loginUser(), this.registerMode = false, console.log(res)));
+    }
+  }
 
-    console.log("Logind details", this.authForm.value);
+  loginUser() {
+    this.apiService.loginUser(this.authForm.value).subscribe((res: HttpResponse<ILogin>) => (this.cookieService.set('mr-token', res.body!.token!), this.router.navigate(['/movies']), console.log(res)));
   }
 
 
@@ -40,7 +48,7 @@ export class AuthComponent implements OnInit {
   }
   ngOnInit(): void {
     const token = this.cookieService.get('mr-token');
-    if(token) {
+    if (token) {
       this.router.navigate(['/movies']);
     }
   }
