@@ -10,7 +10,7 @@ import { IMovie } from '../model/movie';
 })
 export class MainComponent implements OnInit {
 
-  movies?:IMovie[] = [];
+  movies:IMovie[] = [];
   selectedMovie!:IMovie;
 
   constructor(

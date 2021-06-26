@@ -9,14 +9,13 @@ import { IMovie } from 'src/app/model/movie';
 })
 export class MovieDetailsComponent implements OnInit {
 
-  @Input() movie?:IMovie
+  @Input() movie!:IMovie
 
   faCoffee = faCoffee
   faStar = faStar
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

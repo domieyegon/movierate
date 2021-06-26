@@ -3,7 +3,7 @@ export interface IMovie {
     title?: string;
     description?: string;
     no_of_ratings?: number;
-    avg_ratings?: number;
+    avg_ratings: number;
 }
 export class Movie implements IMovie {
     constructor(
@@ -11,6 +11,6 @@ export class Movie implements IMovie {
         public title?: string,
         public description?: string,
         public no_of_ratings?: number,
-        public avg_ratings?: number,
+        public avg_ratings: number =0,
     ) { }
 }
