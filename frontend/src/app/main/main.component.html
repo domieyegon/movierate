@@ -1,4 +1,6 @@
-<button (click)= "logout()">Logout</button>
+<div class="logout-wrapper">
+    <fa-icon (click)= "logout()" [icon]="faLogout"></fa-icon>
+</div>
 <div class="layout">
     <app-movie-list [movies]="movies" (selectMovie)="selectMovie($event)" (editedMovie)= "editMovie($event)" (createNewMovie)= "createNewMovie()" (deletedMovie)= "deletedMovie($event)"></app-movie-list>
     <div>

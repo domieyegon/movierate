@@ -10,6 +10,7 @@
         <span *ngIf="registerMode">Register</span>
     </button>
 </form>
-
-<span *ngIf="!registerMode">Don't have an account? <span (click)="registerMode = true"> Register here</span> </span>
-<span *ngIf="registerMode">Already have an account? <span (click)="registerMode = false"> Login here</span></span>
+<br>
+<br>
+<span *ngIf="!registerMode">Don't have an account? <span class="info-link" (click)="registerMode = true"> Register here</span> </span>
+<span *ngIf="registerMode">Already have an account? <span class="info-link" (click)="registerMode = false"> Login here</span></span>

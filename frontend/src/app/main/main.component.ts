@@ -1,6 +1,7 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from '../api.service';
 import { IMovie } from '../model/movie';
@@ -15,6 +16,8 @@ export class MainComponent implements OnInit {
   movies: IMovie[] = [];
   selectedMovie!: IMovie;
   editedMovie!: IMovie;
+
+  faLogout = faSignOutAlt
 
   isEditMovie: Boolean = false;
 
