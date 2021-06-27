@@ -1,0 +1,39 @@
+<ActionBar title="Login"> </ActionBar>
+<StackLayout class="page">
+    <StackLayout margin="10" verticalAlignment="center">
+        <StackLayout class="form" padding="50" *ngIf="loading">
+            <ActivityIndicator id="myIndicator" busy="true"></ActivityIndicator>
+        </StackLayout>
+
+        <StackLayout class="form" padding="15" *ngIf="!loading">
+            <RadDataForm tkExampleTitle tkToggleNavButton [source]="input"></RadDataForm>
+
+            <Button class="btn btn-primary w-full" [isEnable="!loading" ] text="Login" (tap)="onLogin()"></Button>
+        </StackLayout>
+    </StackLayout>
+</StackLayout>
+<!-- <Label [nsRouterLink] = "['/register']" text="Don't have an account? Register here" class="text"></Label> -->
+
+<!-- <StackLayout class="page">
+    <StackLayout margin="10" verticalAlignment="center">
+        <StackLayout class="form" padding="50" *ngIf="loading">
+            <ActivityIndicator id="myIndicator" busy="true"></ActivityIndicator>
+        </StackLayout> 
+
+        <StackLayout class="form" padding="15" *ngIf="!loading">
+            <RadDataForm #myLoginDataForm tkExampleTitle tkToggleNavButton [source]="input">
+                <TKEntityProperty class="myTextField" tkDataFormProperty name="username" displayName="Username" index="0" required="true">
+                    <TKNoEmptyValidator tkEntityPropertyValidators errorMessage="Username can't be empty."></TKNoEmptyValidator>
+                </TKEntityProperty>
+
+                <TKEntityProperty tkDataFormProperty name="password" displayName="Password" index="1" required="true">
+                    <TKPropertyEditor tkEntityPropertyEditor type="Password"></TKPropertyEditor>
+                    <TKNoEmptyValidator tkEntityPropertyValidators errorMessage="Password can't be empty."></TKNoEmptyValidator>
+                </TKEntityProperty>
+            </RadDataForm>
+
+            <Button class="btn btn-primary w-full" [isEnable="!loading"] text="Login" (tap)="onLogin()"></Button>
+            <Label [nsRouterLink] = "['/register']" text="Don't have an account? Register here" class="text"></Label>
+        </StackLayout> 
+    </StackLayout> 
+</StackLayout> -->
