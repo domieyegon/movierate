@@ -1,4 +1,7 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
+import { IMovie } from '../model/movie';
 
 @Component({
   selector: 'app-movie-list',
@@ -7,8 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieListComponent implements OnInit {
 
-  constructor() { }
+  items:IMovie[] = [];
 
-  ngOnInit(): void {}
+  constructor(
+    private apiService: ApiService
+  ) { }
+
+  ngOnInit(): void {
+    this.apiService.getMovies().subscribe(
+      (res: HttpResponse<IMovie[]>)=>(
+        this.items = res.body
+      )
+    )
+  }
 
 }

@@ -1,10 +1,22 @@
-<!-- <div *ngFor="let movie of movies" class="movie-item">
-    <h3 class="movie-title" (click)="movieClicked(movie)">{{movie.title}}</h3>
-    <fa-icon id="edit-icon" [icon]="edit" (click)="editMovie(movie)"></fa-icon>
-    <fa-icon id="trash-icon" [icon]="trash" (click)="deleteMovie(movie)"></fa-icon>
-</div>
-
-<button type="button" (click)="newMovie()">New Movie</button> -->
-
 <ActionBar title="Movies"> </ActionBar>
-<Label text="List of movies"></Label>
+
+<!-- List of movies -->
+<!-- <GridLayout>
+  <ListView [items]="movies">
+      <ng-template let-item="movie">
+          <StackLayout>
+            <Label [text]="movie.title"></Label>
+          </StackLayout>
+      </ng-template>
+  </ListView>
+</GridLayout> -->
+
+<GridLayout>
+    <ListView [items]="items">
+      <ng-template let-item="item">
+        <StackLayout [nsRouterLink]="['/movie', item.id]">
+          <Label class="movie-title" [text]="item.title"></Label>
+        </StackLayout>
+      </ng-template>
+    </ListView>
+  </GridLayout>
