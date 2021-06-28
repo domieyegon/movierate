@@ -1,0 +1,14 @@
+.logout-wrapper {
+    float: right;
+}
+
+.logout-wrapper fa-icon {
+    font-size: 2em;
+    cursor: pointer;
+    color: #F46001;
+}
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}

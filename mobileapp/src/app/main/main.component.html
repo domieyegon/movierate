@@ -1,0 +1,10 @@
+<div class="logout-wrapper">
+    <fa-icon (click)= "logout()" [icon]="faLogout"></fa-icon>
+</div>
+<div class="layout">
+    <app-movie-list [movies]="movies" (selectMovie)="selectMovie($event)" (editedMovie)= "editMovie($event)" (createNewMovie)= "createNewMovie()" (deletedMovie)= "deletedMovie($event)"></app-movie-list>
+    <div>
+        <app-movie-details *ngIf="!isEditMovie" [movie]="this.selectedMovie" (updateMovie)="selectMovie($event)"></app-movie-details>
+        <app-movie-form *ngIf="isEditMovie" [movie]="editedMovie" (movieCreated)="movieCreated($event)" (movieUpdated)="movieUpdated($event)"></app-movie-form>
+    </div>
+</div>

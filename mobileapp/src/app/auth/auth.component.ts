@@ -20,6 +20,8 @@ export class AuthComponent implements OnInit {
   registerMode = false;
   loading: boolean;
   input: LoginInput
+
+  challengeDesc = '';
   // @ViewChild('myLoginDataForm') myLoginDataFormComp: RadDataFormComponent;
 
   // authForm = new FormGroup({
@@ -46,14 +48,26 @@ export class AuthComponent implements OnInit {
 
       this.loading = true;
       const userData = {username:this.input.username, password: this.input.password};
+
       this.apiService.loginUser(userData).subscribe(
-        (res: HttpResponse<LoginInput>) => 
+        (res: HttpResponse<LoginInput>) =>
         (ApplicationSettings.setString('mr-token',res.body!.token!),
          this.loading= false,
-        //  this.router.navigate(['/movies']),
+         this.router.navigate(['/movies'], {clearHistory: true}),
           console.log(res)
         ));
-      console.log(userData);
+  }
+
+  onRegister() {
+    this.loading = true;
+    const userData = {username:this.input.username, password: this.input.password};
+    this.apiService.registerUser(userData).subscribe(
+      (res: HttpResponse<LoginInput>) => (
+        this.onLogin(),
+        this.registerMode = false,
+        this.loading = false,
+        console.log(res)
+      ));
   }
 
   // onLogin() {

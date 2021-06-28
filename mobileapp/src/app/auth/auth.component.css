@@ -1,4 +1,39 @@
 .info-link {
     color: #F46001;
     cursor: pointer;
+    font-size: 16;
+}
+
+.login-container {
+    padding: 10;
+
+}
+
+.txt-input {
+    font-size: 16;
+    border-bottom-color: #F46001;
+    border-bottom-width: 2;
+    margin: 5 0;
+    padding: 8 4;
+}
+
+/* .spinner-container {
+    margin-top: 40%;
+    border-color: #1df401;
+    border-width: 5;
+
+} */
+
+.spinner {
+    text-align: center;
+    color: #F46001;
+}
+
+.btn-login {
+    font-size: 16;
+    width: 100%;
+    margin-bottom: 10;
+    color: #ffffff;
+    background: #F46001;
+    border-radius: 30%;
 }

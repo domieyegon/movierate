@@ -1,39 +1,47 @@
 <ActionBar title="Login"> </ActionBar>
-<StackLayout class="page">
+<!-- <StackLayout class="page">
     <StackLayout margin="10" verticalAlignment="center">
-        <StackLayout class="form" padding="50" *ngIf="loading">
+        <StackLayout class="form" padding="50" *ngIf="!loading">
             <ActivityIndicator id="myIndicator" busy="true"></ActivityIndicator>
         </StackLayout>
 
         <StackLayout class="form" padding="15" *ngIf="!loading">
-            <RadDataForm tkExampleTitle tkToggleNavButton [source]="input"></RadDataForm>
+            <RadDataForm tkExampleTitle tkToggleNavButton [source]="input">
+                <TKEntityProperty tkDataFormProperty name="username" displayName="Username" index="0"></TKEntityProperty>
+                <TKEntityProperty tkDataFormProperty name="password" displayName="Password" index="1">
+                    <TKPropertyEditor tkEntityPropertyEditor type="Password"></TKPropertyEditor>
+                </TKEntityProperty>
+            </RadDataForm>
 
             <Button class="btn btn-primary w-full" [isEnable="!loading" ] text="Login" (tap)="onLogin()"></Button>
         </StackLayout>
     </StackLayout>
-</StackLayout>
-<!-- <Label [nsRouterLink] = "['/register']" text="Don't have an account? Register here" class="text"></Label> -->
-
-<!-- <StackLayout class="page">
-    <StackLayout margin="10" verticalAlignment="center">
-        <StackLayout class="form" padding="50" *ngIf="loading">
-            <ActivityIndicator id="myIndicator" busy="true"></ActivityIndicator>
-        </StackLayout> 
-
-        <StackLayout class="form" padding="15" *ngIf="!loading">
-            <RadDataForm #myLoginDataForm tkExampleTitle tkToggleNavButton [source]="input">
-                <TKEntityProperty class="myTextField" tkDataFormProperty name="username" displayName="Username" index="0" required="true">
-                    <TKNoEmptyValidator tkEntityPropertyValidators errorMessage="Username can't be empty."></TKNoEmptyValidator>
-                </TKEntityProperty>
-
-                <TKEntityProperty tkDataFormProperty name="password" displayName="Password" index="1" required="true">
-                    <TKPropertyEditor tkEntityPropertyEditor type="Password"></TKPropertyEditor>
-                    <TKNoEmptyValidator tkEntityPropertyValidators errorMessage="Password can't be empty."></TKNoEmptyValidator>
-                </TKEntityProperty>
-            </RadDataForm>
-
-            <Button class="btn btn-primary w-full" [isEnable="!loading"] text="Login" (tap)="onLogin()"></Button>
-            <Label [nsRouterLink] = "['/register']" text="Don't have an account? Register here" class="text"></Label>
-        </StackLayout> 
-    </StackLayout> 
 </StackLayout> -->
+
+
+<StackLayout class="login-container">
+
+    <!-- Username and password fields -->
+    <!-- <Label [text]="input.username"></Label> -->
+
+    <StackLayout class="spinner-container">
+        <TextField class="txt-input" hint="Enter Username" [(ngModel)]="input.username"></TextField>
+
+        <!-- <Label [text]="input.password"></Label> -->
+        <TextField class="txt-input" hint="Enter Password" [(ngModel)]="input.password"></TextField>
+
+
+        <!-- Spinner -->
+        <ActivityIndicator *ngIf="loading" class="spinner" busy="true"></ActivityIndicator>
+
+        <!-- Login button -->
+        <Button *ngIf="!loading && !registerMode" class="btn-login" text="Login" (tap)="onLogin()"></Button>
+        <Button *ngIf="!loading && registerMode" class="btn-login" text="Register" (tap)="onRegister()"></Button>
+
+        <Label *ngIf="!loading && !registerMode" (tap)="registerMode = true" class="info-link" text="Don't have an account? Register Here"></Label>
+
+        <Label *ngIf="!loading && registerMode" (tap)="registerMode = false" class="info-link" text="Already have an account? Login Here"></Label>
+    </StackLayout>
+
+
+</StackLayout>

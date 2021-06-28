@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http'
 import { IMovie } from './model/movie';
 import { Observable } from 'rxjs';
 import { ILogin } from './model/login';
-import { CookieService } from 'ngx-cookie-service';
+import { ApplicationSettings } from '@nativescript/core';
 
 type EntityResponseType = HttpResponse<IMovie>;
 type EntityArrayResponseType = HttpResponse<IMovie[]>;
@@ -12,13 +12,12 @@ type EntityArrayResponseType = HttpResponse<IMovie[]>;
   providedIn: 'root'
 })
 export class ApiService {
-  baseUrl = "http://127.0.0.1:8000/";
+  baseUrl = "http://10.0.2.2:8000/";
 
   baseMovieUrl = `${this.baseUrl}api/movies/`;
 
   constructor(
-    private http: HttpClient,
-    private cookieService: CookieService
+    private http: HttpClient
   ) { }
 
   loginUser(userData: ILogin): Observable<HttpResponse<ILogin>> {
@@ -67,7 +66,7 @@ export class ApiService {
   }
 
   getAuthToken() {
-    const token = this.cookieService.get('mr-token');
+    const token = ApplicationSettings.getString('mr-token');
     return new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Token ${token}`
