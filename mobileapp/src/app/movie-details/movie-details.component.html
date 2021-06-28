@@ -15,7 +15,9 @@
     </div>
 </div> -->
 
-<ActionBar title="Movie Details"></ActionBar>
+<ActionBar title="Movie Details">
+    <ActionItem text="logout" (tap)="logout()" ios.systemIcon="16" ios.position="right" android.position="popup"></ActionItem>
+</ActionBar>
 
 <FlexboxLayout flexDirection="column" class="details-container">
   <Label class="movie-detail-title" [text]="movie.title"></Label>

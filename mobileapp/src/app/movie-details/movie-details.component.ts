@@ -1,6 +1,8 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { RouterExtensions } from '@nativescript/angular';
+import { ApplicationSettings } from '@nativescript/core';
 import { ApiService } from '../api.service';
 import { IMovie } from '../model/movie';
 
@@ -19,7 +21,8 @@ export class MovieDetailsComponent implements OnInit {
 
   constructor(
     private apiService:ApiService,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private router:RouterExtensions
   ) { }
 
   // rateHover(rate:number) {
@@ -33,6 +36,11 @@ export class MovieDetailsComponent implements OnInit {
   // getDetails() {
   //   this.apiService.getMovie(this.movie.id!).subscribe((res: HttpResponse<IMovie>)=>(this.updateMovie.emit(res.body)));
   // }
+
+  logout() {
+    ApplicationSettings.remove('mr-token');
+    this.router.navigate(['/login'], {clearHistory: true});
+  }
 
   ngOnInit(): void {
     const id  = +this.route.snapshot.params.id;

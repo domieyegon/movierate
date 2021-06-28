@@ -1,6 +1,9 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { RouterExtensions } from '@nativescript/angular';
+import { ApplicationSettings } from '@nativescript/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-movie-form',
@@ -11,7 +14,8 @@ export class MovieFormComponent implements OnInit {
 
 
   constructor(
-    // private apiService:ApiService
+    private apiService:ApiService,
+    private router:RouterExtensions
   ) { }
 
   // saveMovie() {
@@ -32,6 +36,11 @@ export class MovieFormComponent implements OnInit {
   //   }
   // }
 
+
+  logout() {
+    ApplicationSettings.remove('mr-token');
+    this.router.navigate(['/login'], {clearHistory: true});
+  }
   ngOnInit(): void {
   }
 

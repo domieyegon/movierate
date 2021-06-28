@@ -1,12 +1,15 @@
-<ActionBar title="Movies"> </ActionBar>
+<ActionBar title="Movies">
+  <ActionItem text="logout" (tap)="logout()" ios.systemIcon="16" ios.position="right" android.position="popup">
+  </ActionItem>
+</ActionBar>
 
 <!-- List of movies -->
 <GridLayout>
-    <ListView [items]="items">
-      <ng-template let-item="item">
-        <StackLayout [nsRouterLink]="['/movie', item.id]">
-          <Label class="movie-title" [text]="item.title"></Label>
-        </StackLayout>
-      </ng-template>
-    </ListView>
-  </GridLayout>
+  <ListView [items]="items">
+    <ng-template let-item="item">
+      <StackLayout [nsRouterLink]="['/movie', item.id]">
+        <Label class="movie-title" [text]="item.title"></Label>
+      </StackLayout>
+    </ng-template>
+  </ListView>
+</GridLayout>

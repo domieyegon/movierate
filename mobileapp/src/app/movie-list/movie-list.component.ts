@@ -1,5 +1,7 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { RouterExtensions } from '@nativescript/angular';
+import { ApplicationSettings } from '@nativescript/core';
 import { ApiService } from '../api.service';
 import { IMovie } from '../model/movie';
 
@@ -13,8 +15,14 @@ export class MovieListComponent implements OnInit {
   items:IMovie[] = [];
 
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private router: RouterExtensions
   ) { }
+
+  logout() {
+    ApplicationSettings.remove('mr-token');
+    this.router.navigate(['/login'], {clearHistory: true});
+  }
 
   ngOnInit(): void {
     this.apiService.getMovies().subscribe(
