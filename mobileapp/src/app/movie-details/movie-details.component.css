@@ -3,7 +3,7 @@ fa-icon.orange {
 }
 
 fa-icon.purple {
-   color: purple; 
+   color: purple;
 }
 
 #rate-container {
@@ -13,4 +13,16 @@ fa-icon.purple {
 #rate-container {
     cursor: pointer;
     font-size: 2em;
+}
+
+.details-container {
+    padding: 10;
+}
+
+.movie-detail-title {
+    font-size: 25;
+}
+
+.movie-detail-item {
+    font-size: 16;
 }

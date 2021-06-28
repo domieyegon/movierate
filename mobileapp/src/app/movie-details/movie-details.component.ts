@@ -1,5 +1,6 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../api.service';
 import { IMovie } from '../model/movie';
 
@@ -10,14 +11,15 @@ import { IMovie } from '../model/movie';
 })
 export class MovieDetailsComponent implements OnInit {
 
-  movie!:IMovie;
+  movie?:IMovie;
   // @Output() updateMovie = new EventEmitter();
 
 
   // rateHovered = 0;
 
   constructor(
-    private apiService:ApiService
+    private apiService:ApiService,
+    private route:ActivatedRoute
   ) { }
 
   // rateHover(rate:number) {
@@ -33,9 +35,11 @@ export class MovieDetailsComponent implements OnInit {
   // }
 
   ngOnInit(): void {
-    this.apiService.getMovie(this.movie.id).subscribe(
+    const id  = +this.route.snapshot.params.id;
+    this.apiService.getMovie(id).subscribe(
       (res: HttpResponse<IMovie>) => (
-        this.movie = res.body
+        this.movie = res.body,
+        console.log(this.movie)
       )
     );
   }

@@ -16,3 +16,8 @@
 </div> -->
 
 <ActionBar title="Movie Details"></ActionBar>
+
+<FlexboxLayout flexDirection="column" class="details-container">
+  <Label class="movie-detail-title" [text]="movie.title"></Label>
+  <Label class="movie-detail-item" [text]="movie.description"></Label>
+</FlexboxLayout>
