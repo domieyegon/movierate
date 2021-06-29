@@ -23,6 +23,5 @@
 <FlexboxLayout flexDirection="column" class="details-container">
   <Label class="movie-detail-title" [text]="movie?.title"></Label>
   <Label class="movie-detail-item" [text]="movie?.description"></Label>
-  <Label class="fa" [text]="'fa-bluetooth' | fonticon"></Label>
   <Button class="btn-delete" text="Delete" (tap)="deleteMovie()"></Button>
 </FlexboxLayout>
