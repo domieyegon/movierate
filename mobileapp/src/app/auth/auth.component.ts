@@ -38,7 +38,7 @@ export class AuthComponent implements OnInit {
   ngOnInit() {
     this.loading = false;
     if (ApplicationSettings.getString('mr-token')) {
-      this.router.navigate(['/movies']);
+      this.router.navigate(['/movies'], {clearHistory: true});
     }
 
     this.input = new LoginInput("", "");

@@ -16,10 +16,11 @@
 </div> -->
 
 <ActionBar title="Movie Details">
+    <ActionItem text="Edit" (tap)="editMovie()" android.position="actionBar"></ActionItem>
     <ActionItem text="logout" (tap)="logout()" ios.systemIcon="16" ios.position="right" android.position="popup"></ActionItem>
 </ActionBar>
 
 <FlexboxLayout flexDirection="column" class="details-container">
-  <Label class="movie-detail-title" [text]="movie.title"></Label>
-  <Label class="movie-detail-item" [text]="movie.description"></Label>
+  <Label class="movie-detail-title" [text]="movie?.title"></Label>
+  <Label class="movie-detail-item" [text]="movie?.description"></Label>
 </FlexboxLayout>

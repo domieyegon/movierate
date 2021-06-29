@@ -1,9 +1,11 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { RouterExtensions } from '@nativescript/angular';
 import { ApplicationSettings } from '@nativescript/core';
 import { ApiService } from '../api.service';
+import { IMovie } from '../model/movie';
 
 @Component({
   selector: 'app-movie-form',
@@ -12,10 +14,15 @@ import { ApiService } from '../api.service';
 })
 export class MovieFormComponent implements OnInit {
 
+  movie?:IMovie;
+
+  isEditing: boolean = false;
+  id;
 
   constructor(
     private apiService:ApiService,
-    private router:RouterExtensions
+    private router:RouterExtensions,
+    private route:ActivatedRoute,
   ) { }
 
   // saveMovie() {
@@ -36,12 +43,29 @@ export class MovieFormComponent implements OnInit {
   //   }
   // }
 
+  saveMovie(){
+    if (!this.id) {
+      this.apiService.createMovie(this.movie.title, this.movie.description).subscribe((res: HttpResponse<IMovie>)=> (this.router.navigate(['/movies'], {clearHistory:true})));
+    } else {
+      this.apiService.updateMovie(this.movie.id, this.movie.title, this.movie.description).subscribe((res: HttpResponse<IMovie>) => (this.router.navigate(['/movies'], {clearHistory:true})));
+    }
+  }
+
 
   logout() {
     ApplicationSettings.remove('mr-token');
     this.router.navigate(['/login'], {clearHistory: true});
   }
   ngOnInit(): void {
+    const id = +this.route.snapshot.params['id'];
+    this.id = id;
+    if (id) {
+      this.isEditing = true;
+      this.apiService.getMovie(id).subscribe((res: HttpResponse<IMovie>)=>(this.movie = res.body, console.log(this.movie)))
+    } else {
+      this.isEditing = false;
+    }
+    console.log(this.isEditing);
   }
 
 }

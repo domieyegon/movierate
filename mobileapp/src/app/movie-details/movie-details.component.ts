@@ -37,13 +37,18 @@ export class MovieDetailsComponent implements OnInit {
   //   this.apiService.getMovie(this.movie.id!).subscribe((res: HttpResponse<IMovie>)=>(this.updateMovie.emit(res.body)));
   // }
 
+  editMovie() {
+    this.router.navigate(['/movie', this.movie.id, 'edit']);
+  }
+
   logout() {
     ApplicationSettings.remove('mr-token');
     this.router.navigate(['/login'], {clearHistory: true});
   }
 
   ngOnInit(): void {
-    const id  = +this.route.snapshot.params.id;
+    // const id2 = +this.route.snapshot.params['id'];
+    const id  = +this.route.snapshot.params['id'];
     this.apiService.getMovie(id).subscribe(
       (res: HttpResponse<IMovie>) => (
         this.movie = res.body,

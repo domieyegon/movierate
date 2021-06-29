@@ -19,6 +19,10 @@ export class MovieListComponent implements OnInit {
     private router: RouterExtensions
   ) { }
 
+  addMovie() {
+    this.router.navigate(['/movie/new']);
+  }
+
   logout() {
     ApplicationSettings.remove('mr-token');
     this.router.navigate(['/login'], {clearHistory: true});

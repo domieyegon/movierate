@@ -1,4 +1,6 @@
 <ActionBar title="Movies">
+  <ActionItem text="Add" (tap)="addMovie()" android.position="actionBar">
+  </ActionItem>
   <ActionItem text="logout" (tap)="logout()" ios.systemIcon="16" ios.position="right" android.position="popup">
   </ActionItem>
 </ActionBar>
@@ -7,7 +9,7 @@
 <GridLayout>
   <ListView [items]="items">
     <ng-template let-item="item">
-      <StackLayout [nsRouterLink]="['/movie', item.id]">
+      <StackLayout [nsRouterLink]="['/movie', item.id, 'view']">
         <Label class="movie-title" [text]="item.title"></Label>
       </StackLayout>
     </ng-template>
