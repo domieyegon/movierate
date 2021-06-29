@@ -14,7 +14,8 @@ import { MovieFormComponent } from './movie-form/movie-form.component'
 
 @NgModule({
   bootstrap: [AppComponent],
-  imports: [NativeScriptModule,
+  imports: [
+    NativeScriptModule,
     HttpClientModule,
     AppRoutingModule,
     NativeScriptUIDataFormModule,

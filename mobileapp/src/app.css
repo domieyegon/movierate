@@ -37,3 +37,8 @@ Button.-primary {
   background: #f41501;
   border-radius: 12;
 }
+
+.fa {
+  font-family: FontAwesome, fontawesome-webfont;
+}
+
