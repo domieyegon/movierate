@@ -41,6 +41,10 @@ export class MovieDetailsComponent implements OnInit {
     this.router.navigate(['/movie', this.movie.id, 'edit']);
   }
 
+  deleteMovie(){
+    this.apiService.deleteMovie(this.movie.id).subscribe((res: HttpResponse<IMovie>)=>(this.router.navigate(['/movies'])));
+  }
+
   logout() {
     ApplicationSettings.remove('mr-token');
     this.router.navigate(['/login'], {clearHistory: true});

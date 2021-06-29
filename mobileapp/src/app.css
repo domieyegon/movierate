@@ -30,3 +30,10 @@ Button.-primary {
   background: #F46001;
   border-radius: 12;
 }
+
+.btn-delete {
+  font-size: 16;
+  color: #fff;
+  background: #f41501;
+  border-radius: 12;
+}
