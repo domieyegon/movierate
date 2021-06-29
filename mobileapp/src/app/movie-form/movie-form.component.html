@@ -26,16 +26,13 @@
 
 <StackLayout>
     <StackLayout class="form-container">
-        <!-- <TextField class="txt-input" hint="Enter Username" [(ngModel)]="input.username"></TextField>
-        <Label class="form-label" [text]="input.username"></Label> -->
-        <!-- <TextField class="form-item" [(ngModel)]="movie.title"></TextField> -->
-        <Label class="form-label" text="Title"></Label>
-        <TextField class="form-item" [(ngModel)]="movie.title"></TextField>
+        <!-- <Label class="form-label" text="Title"></Label> -->
+        <TextField hint="Enter title" class="form-item" [(ngModel)]="movie.title"></TextField>
 
-        <Label class="form-label" text="Description"></Label>
-        <TextField class="form-item" [(ngModel)]="movie.description"></TextField>
+        <!-- <Label class="form-label" text="Description"></Label> -->
+        <TextField hint="Enter description" class="form-item" [(ngModel)]="movie.description"></TextField>
 
-        <Button class="form-item" text="Save" (tap)="saveMovie()"></Button>
+        <Button class="btn-orange form-item" text="Save" (tap)="saveMovie()"></Button>
 
     </StackLayout>
 </StackLayout>

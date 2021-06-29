@@ -5,7 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterExtensions } from '@nativescript/angular';
 import { ApplicationSettings } from '@nativescript/core';
 import { ApiService } from '../api.service';
-import { IMovie } from '../model/movie';
+import { LoginInput } from '../model/LoginInput';
+import { IMovie, Movie } from '../model/movie';
 
 @Component({
   selector: 'app-movie-form',
@@ -14,7 +15,7 @@ import { IMovie } from '../model/movie';
 })
 export class MovieFormComponent implements OnInit {
 
-  movie?:IMovie;
+  movie:IMovie = new Movie();
 
   isEditing: boolean = false;
   id;
@@ -57,6 +58,7 @@ export class MovieFormComponent implements OnInit {
     this.router.navigate(['/login'], {clearHistory: true});
   }
   ngOnInit(): void {
+
     const id = +this.route.snapshot.params['id'];
     this.id = id;
     if (id) {

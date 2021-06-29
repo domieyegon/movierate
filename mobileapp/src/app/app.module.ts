@@ -20,13 +20,14 @@ import { MovieFormComponent } from './movie-form/movie-form.component'
     NativeScriptUIDataFormModule,
     NativeScriptFormsModule,
   ],
-  declarations: [AppComponent,
+  declarations: [
+    AppComponent,
     ItemsComponent,
     ItemDetailComponent,
     AuthComponent,
     MovieListComponent,
     MovieDetailsComponent,
-    MovieFormComponent
+    MovieFormComponent,
   ],
   providers: [],
   schemas: [NO_ERRORS_SCHEMA],
