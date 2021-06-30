@@ -13,6 +13,7 @@ android {
   defaultConfig {
     minSdkVersion 17
     generatedDensities = []
+    applicationId = "org.cooltek.MovieRater"
   }
   aaptOptions {
     additionalParameters "--no-version-vectors"
