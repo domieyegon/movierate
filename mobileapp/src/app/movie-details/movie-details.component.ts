@@ -16,7 +16,7 @@ export class MovieDetailsComponent implements OnInit {
   movie?:IMovie;
   // @Output() updateMovie = new EventEmitter();
 
-
+  yourRate:number = 0;
   // rateHovered = 0;
 
   constructor(
@@ -37,6 +37,11 @@ export class MovieDetailsComponent implements OnInit {
   //   this.apiService.getMovie(this.movie.id!).subscribe((res: HttpResponse<IMovie>)=>(this.updateMovie.emit(res.body)));
   // }
 
+  rateClicked(rate: number) {
+    this.yourRate = rate;
+    this.apiService.rateMovie(rate, this.movie.id).subscribe((res: HttpResponse<IMovie>)=>(this.getMovie(), console.log(res.body)))
+  }
+
   editMovie() {
     this.router.navigate(['/movie', this.movie.id, 'edit']);
   }
@@ -50,8 +55,7 @@ export class MovieDetailsComponent implements OnInit {
     this.router.navigate(['/login'], {clearHistory: true});
   }
 
-  ngOnInit(): void {
-    // const id2 = +this.route.snapshot.params['id'];
+  getMovie() {
     const id  = +this.route.snapshot.params['id'];
     this.apiService.getMovie(id).subscribe(
       (res: HttpResponse<IMovie>) => (
@@ -59,6 +63,11 @@ export class MovieDetailsComponent implements OnInit {
         console.log(this.movie)
       )
     );
+  }
+
+  ngOnInit(): void {
+    // const id2 = +this.route.snapshot.params['id'];
+    this.getMovie();
   }
 
 }

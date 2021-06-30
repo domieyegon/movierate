@@ -22,15 +22,25 @@
 </ActionBar>
 
 <FlexboxLayout flexDirection="column" class="details-container">
-    <Label class="movie-detail-title" [text]="movie?.title"></Label>
-    <Label class="movie-detail-item" [text]="movie?.description"></Label>
+    <Label class="movie-detail-title" marginLeft="15" [text]="movie?.title"></Label>
+    <Label class="movie-detail-item" marginLeft="15" [text]="movie?.description"></Label>
 
-    <StackLayout orientation="horizontal">
-        <Label text="&#xf005;"  style="font-size: 20em; color: orange" class="fas"></Label>
-        <Label text="&#xf005;"  style="font-size: 20em; color: orange" class="fas"></Label>
-        <Label text="&#xf005;"  style="font-size: 20em; color: orange" class="fas"></Label>
-        <Label text="&#xf005;"  style="font-size: 20em; color: orange" class="fas"></Label>
-        <Label text="&#xf005;"  style="font-size: 20em; color: orange" class="fas"></Label>
+    <StackLayout orientation="horizontal" class="m-15">
+        <Label text="&#xf005;" [ngClass]="{'orange':movie?.avg_ratings > 0}" class="fas rating"></Label>
+        <Label text="&#xf005;" [ngClass]="{'orange':movie?.avg_ratings > 1}" class="fas rating"></Label>
+        <Label text="&#xf005;" [ngClass]="{'orange':movie?.avg_ratings > 2}" class="fas rating"></Label>
+        <Label text="&#xf005;" [ngClass]="{'orange':movie?.avg_ratings > 3}" class="fas rating"></Label>
+        <Label text="&#xf005;" [ngClass]="{'orange':movie?.avg_ratings > 4}" class="fas rating"></Label>
+        <Label class="no-rating" text="( {{movie?.no_of_ratings}})"></Label>
+    </StackLayout>
+
+    <Label class="h1" marginLeft="15" text="Rate it !"></Label>
+    <StackLayout orientation="horizontal" class="m-15">
+        <Label text="&#xf005;" [ngClass]="{'yellow':yourRate > 0}" (tap)="rateClicked(1)" class="fas rating"></Label>
+        <Label text="&#xf005;" [ngClass]="{'yellow':yourRate > 1}" (tap)="rateClicked(2)" class="fas rating"></Label>
+        <Label text="&#xf005;" [ngClass]="{'yellow':yourRate > 2}" (tap)="rateClicked(3)" class="fas rating"></Label>
+        <Label text="&#xf005;" [ngClass]="{'yellow':yourRate > 3}" (tap)="rateClicked(4)" class="fas rating"></Label>
+        <Label text="&#xf005;" [ngClass]="{'yellow':yourRate > 4}" (tap)="rateClicked(5)" class="fas rating"></Label>
     </StackLayout>
 
 

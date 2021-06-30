@@ -26,3 +26,20 @@ fa-icon.purple {
 .movie-detail-item {
     font-size: 16;
 }
+
+.rating {
+    font-size: 20em;
+}
+
+.orange {
+    color: orange
+}
+
+.no-rating {
+    font-size: 18em;
+    color: black;
+}
+
+.yellow {
+    color: purple;
+}
