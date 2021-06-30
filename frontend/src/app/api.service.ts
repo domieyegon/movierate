@@ -4,6 +4,7 @@ import { IMovie } from './model/movie';
 import { Observable } from 'rxjs';
 import { ILogin } from './model/login';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from '../environments/environment';
 
 type EntityResponseType = HttpResponse<IMovie>;
 type EntityArrayResponseType = HttpResponse<IMovie[]>;
@@ -12,7 +13,7 @@ type EntityArrayResponseType = HttpResponse<IMovie[]>;
   providedIn: 'root'
 })
 export class ApiService {
-  baseUrl = "http://127.0.0.1:8000/";
+  baseUrl = environment.apiUrl;
 
   baseMovieUrl = `${this.baseUrl}api/movies/`;
 
