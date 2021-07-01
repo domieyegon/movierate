@@ -1,5 +1,6 @@
 .logout-wrapper {
     float: right;
+    padding: 0 3em;
 }
 
 .logout-wrapper fa-icon {
@@ -11,4 +12,5 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
+    padding: 0 3em;
 }
