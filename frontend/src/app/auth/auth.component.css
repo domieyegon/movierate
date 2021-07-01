@@ -14,9 +14,9 @@
 
 @media (max-width: 768px) {
   .login-form {
-    width:100%;
+    width:90%;
     margin: 0;
-    padding: 0;
+    padding: 1rem;
   }
 }
 

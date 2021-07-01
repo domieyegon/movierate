@@ -10,6 +10,11 @@
   /* display: flex;
   flex-direction: row; */
 }
+@media (max-width: 768px) {
+  .app-nav {
+    padding: 5px 1em;
+  }
+}
 
 .app-logo-container {
   display: flex;
