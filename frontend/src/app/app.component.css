@@ -1,12 +1,32 @@
 .app {
-    background-color: #282c34;
-    color: #ffffff;
-    height: calc(100vh - 100px);
-    padding: 50px;
+  background-color: #dedede;
+  color: #000;
+  height: 100vh;
+}
+
+.app-nav {
+  background-color: #282c34;
+  padding: 5px 3em;
+  /* display: flex;
+  flex-direction: row; */
+}
+
+.app-logo-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.app-logo {
+  font-size: 30px;
+  color: #F46001;
+}
+
+.app-trademaker {
+  color: #fff;
 }
 
 h1 {
-    text-align: center;
-    color: #F46001;
-    font-size: 3em;
+  text-align: center;
+  color: #F46001;
+  font-size: 3em;
 }

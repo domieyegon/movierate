@@ -1,4 +1,8 @@
 <form class="login-form" [formGroup]="authForm" (ngSubmit)="login()">
+  <div class="login-title">
+    <span *ngIf="!registerMode">LOGIN</span>
+    <span *ngIf="registerMode">REGISTER</span>
+  </div>
   <div *ngIf="errorFlag" class="alert alert-danger" role="alert" >
     <p>{{errorMessage}}</p>
   </div>
@@ -8,13 +12,15 @@
     <label for="password">Password</label><br>
     <input type="password" placeholder="Enter Password" formControlName="password"><br><br>
 
-    <button type="submit" [disabled]="formDisabled()">
+    <button class="auth-btn" type="submit" [disabled]="formDisabled()">
         <span *ngIf="!registerMode">Login</span>
         <span *ngIf="registerMode">Register</span>
     </button>
     <br>
     <br>
-    <span *ngIf="!registerMode">Don't have an account? <span class="info-link" (click)="registerMode = true"> Register here</span> </span>
-    <span *ngIf="registerMode">Already have an account? <span class="info-link" (click)="registerMode = false"> Login here</span></span>
+    <div class="info-link-wrapper">
+      <span *ngIf="!registerMode">Don't have an account? <span class="info-link" (click)="registerMode = true"> Register here</span> </span>
+      <span *ngIf="registerMode">Already have an account? <span class="info-link" (click)="registerMode = false"> Login here</span></span>
+    </div>
 
 </form>

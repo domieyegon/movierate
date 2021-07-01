@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { faFilm } from '@fortawesome/free-solid-svg-icons';
+import { faFilm, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +9,7 @@ import { faFilm } from '@fortawesome/free-solid-svg-icons';
 export class AppComponent {
 
   film =faFilm;
+
+  faLogout = faSignOutAlt
 
 }
