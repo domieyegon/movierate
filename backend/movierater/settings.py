@@ -29,7 +29,9 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = [
-    'movie-rater-domie.herokuapp.com'
+    'movie-rater-domie.herokuapp.com',
+    '127.0.0.1',
+    '10.0.2.2'
 ]
 
 # ALLOWED_HOSTS = [
@@ -150,5 +152,7 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:4200"
+    "http://localhost:4200",
+    "https://movie-rater-web-2e95c.web.app",
+    "https://movie-rater-web-2e95c.firebaseapp.com"
 ]

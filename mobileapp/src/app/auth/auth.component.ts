@@ -20,8 +20,9 @@ export class AuthComponent implements OnInit {
   registerMode = false;
   loading: boolean;
   input: LoginInput
+  errorFlag: boolean = false;
+  infoMessage = '';
 
-  challengeDesc = '';
   // @ViewChild('myLoginDataForm') myLoginDataFormComp: RadDataFormComponent;
 
   // authForm = new FormGroup({
@@ -53,9 +54,17 @@ export class AuthComponent implements OnInit {
         (res: HttpResponse<LoginInput>) =>
         (ApplicationSettings.setString('mr-token',res.body!.token!),
          this.loading= false,
+         this.errorFlag = false,
          this.router.navigate(['/movies'], {clearHistory: true}),
           console.log(res)
-        ));
+        ),
+        err => {
+          this.errorFlag = true;
+          this.loading = false;
+          this.infoMessage = "The username or password provided is invalid!",
+          console.log("error: ",err);
+        }
+        );
   }
 
   onRegister() {
@@ -67,7 +76,14 @@ export class AuthComponent implements OnInit {
         this.registerMode = false,
         this.loading = false,
         console.log(res)
-      ));
+      ),
+      err => {
+        this.errorFlag = true;
+        this.loading = false;
+        this.infoMessage = "A user with that username already exists.";
+        console.log("error: ",err);
+      }
+      );
   }
 
   // onLogin() {

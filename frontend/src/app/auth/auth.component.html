@@ -1,4 +1,7 @@
-<form [formGroup]="authForm" (ngSubmit)="login()">
+<form class="login-form" [formGroup]="authForm" (ngSubmit)="login()">
+  <div *ngIf="errorFlag" class="alert alert-danger" role="alert" >
+    <p>{{errorMessage}}</p>
+  </div>
     <label for="title">Username</label><br>
     <input type="text" placeholder="Enter Username" formControlName="username"><br><br>
 
@@ -6,11 +9,12 @@
     <input type="password" placeholder="Enter Password" formControlName="password"><br><br>
 
     <button type="submit" [disabled]="formDisabled()">
-        <span *ngIf="!registerMode">Login</span>        
+        <span *ngIf="!registerMode">Login</span>
         <span *ngIf="registerMode">Register</span>
     </button>
+    <br>
+    <br>
+    <span *ngIf="!registerMode">Don't have an account? <span class="info-link" (click)="registerMode = true"> Register here</span> </span>
+    <span *ngIf="registerMode">Already have an account? <span class="info-link" (click)="registerMode = false"> Login here</span></span>
+
 </form>
-<br>
-<br>
-<span *ngIf="!registerMode">Don't have an account? <span class="info-link" (click)="registerMode = true"> Register here</span> </span>
-<span *ngIf="registerMode">Already have an account? <span class="info-link" (click)="registerMode = false"> Login here</span></span>

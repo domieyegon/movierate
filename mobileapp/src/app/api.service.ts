@@ -4,6 +4,7 @@ import { IMovie } from './model/movie';
 import { Observable } from 'rxjs';
 import { ILogin } from './model/login';
 import { ApplicationSettings } from '@nativescript/core';
+import { environment } from './environments/environment';
 
 type EntityResponseType = HttpResponse<IMovie>;
 type EntityArrayResponseType = HttpResponse<IMovie[]>;
@@ -12,7 +13,8 @@ type EntityArrayResponseType = HttpResponse<IMovie[]>;
   providedIn: 'root'
 })
 export class ApiService {
-  baseUrl = "http://10.0.2.2:8000/";
+  //   baseUrl = environment.baseUrl;
+  baseUrl = "https://movie-rater-domie.herokuapp.com/";
 
   baseMovieUrl = `${this.baseUrl}api/movies/`;
 

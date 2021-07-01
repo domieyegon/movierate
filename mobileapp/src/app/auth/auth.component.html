@@ -6,7 +6,11 @@
     <!-- Username and password fields -->
     <!-- <Label [text]="input.username"></Label> -->
 
+
     <StackLayout class="spinner-container">
+
+        <Label *ngIf="!loading && errorFlag" class="info-link" color="red" [text]="infoMessage"></Label>
+
         <TextField class="txt-input" hint="Enter Username" [(ngModel)]="input.username"></TextField>
 
         <!-- <Label [text]="input.password"></Label> -->

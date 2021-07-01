@@ -15,6 +15,9 @@ export class AuthComponent implements OnInit {
 
   registerMode = false;
 
+  errorFlag:boolean = false;
+  errorMessage:string = "";
+
   authForm = new FormGroup({
     username: new FormControl(''),
     password: new FormControl('')
@@ -30,12 +33,32 @@ export class AuthComponent implements OnInit {
     if (!this.registerMode) {
       this.loginUser()
     } else {
-      this.apiService.registerUser(this.authForm.value).subscribe((res: HttpResponse<ILogin>) => (this.loginUser(), this.registerMode = false, console.log(res)));
+      this.apiService.registerUser(this.authForm.value).subscribe((res: HttpResponse<ILogin>) => (
+        this.loginUser(),
+        this.registerMode = false,
+        console.log(res)
+        ),
+        err=> {
+          this.errorFlag = true;
+          this.errorMessage = "The user with that username already exists";
+        }
+        );
     }
   }
 
   loginUser() {
-    this.apiService.loginUser(this.authForm.value).subscribe((res: HttpResponse<ILogin>) => (this.cookieService.set('mr-token', res.body!.token!), this.router.navigate(['/movies']), console.log(res)));
+    this.apiService.loginUser(this.authForm.value).subscribe(
+      (res: HttpResponse<ILogin>) => (
+        this.cookieService.set('mr-token',
+        res.body!.token!),
+        this.router.navigate(['/movies']),
+        console.log(res),
+        this.errorFlag = false
+        ),
+        err=> {
+          this.errorFlag = true;
+          this.errorMessage = "Invalid username or password!";
+        });
   }
 
 
