@@ -3,6 +3,14 @@
   margin: auto auto;
 }
 
+@media (max-width: 768px) {
+  .login-form {
+    width:100%;
+    margin: 0;
+    padding: 0;
+  }
+}
+
 .info-link {
     color: #F46001;
     cursor: pointer;
