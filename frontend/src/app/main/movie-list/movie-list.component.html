@@ -1,3 +1,54 @@
+<div class="app-movie-list-row">
+
+  <div class="app-movie-list-card">
+    <div class="app-movie-img-wrapper">
+      <div class="app-movie-img">
+        <!-- Image will go here -->
+      </div>
+    </div>
+    <span class="app-movie-banner">
+      <div class="app-movie-banner-icon">
+        <span class="app-movie-banner-icon-text">M</span>
+      </div>
+    </span>
+    <div class="app-movie-content">
+      <div class="app-movie-title">
+        Into The Bad Lands
+      </div>
+      <div class="app-movie-rating">
+        <fa-icon [icon]="faStar"></fa-icon>
+        <fa-icon [icon]="faStar"></fa-icon>
+        <fa-icon [icon]="faStar"></fa-icon>
+        <fa-icon [icon]="faStar"></fa-icon>
+        <fa-icon [icon]="faStar"></fa-icon>
+        <span> (2)</span>
+      </div>
+      <div class="app-movie-description">
+        Land full of war and blood  Land full of war and blood  Land full of war and blood  Land full of war and blood
+      </div>
+
+    </div>
+    <div class="app-movie-footer">
+      <div class="app-movie-footer-content">
+        <div class="app-user-rating">
+          <span style="color: #F46001;">Your Rating: </span>
+          <fa-icon [icon]="faStar"></fa-icon>
+          <fa-icon [icon]="faStar"></fa-icon>
+          <fa-icon [icon]="faStar"></fa-icon>
+          <fa-icon [icon]="faStar"></fa-icon>
+          <fa-icon [icon]="faStar"></fa-icon>
+        </div>
+        <div class="app-user-action">
+          <fa-icon class="app-user-action-edit" [icon]="edit"></fa-icon>
+          <fa-icon class="app-user-action-delete" [icon]="trash"></fa-icon>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
 <div *ngFor="let movie of movies" class="movie-item">
     <h3 class="movie-title" (click)="movieClicked(movie)">{{movie.title}}</h3>
     <fa-icon id="edit-icon" [icon]="edit" (click)="editMovie(movie)"></fa-icon>

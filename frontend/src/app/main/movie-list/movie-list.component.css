@@ -1,22 +1,141 @@
+.app-movie-list-row {}
+
+.app-movie-list-card {
+  height: 384px;
+  width: 338px;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: rgb(31 31 31 / 12%) 0px 1px 6px, rgb(31 31 31 / 12%) 0px 1px 4px;
+  position: relative;
+  margin: 0;
+}
+
+.app-movie-img-wrapper {
+  -webkit-box-align: center;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  height: 132px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-movie-img {
+  width: 100%;
+  height: 100%;
+  background-color: #F46001;
+  background-size: cover;
+  background-position: center center;
+}
+
+.app-movie-banner {
+  height: 72px;
+  width: 72px;
+  position: absolute;
+  background-color: #fff;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid rgb(225, 225, 225);
+  z-index: 1;
+  border-radius: 50%;
+  padding: 8px;
+  text-align: center;
+}
+
+.app-movie-banner-icon {
+  height: 100%;
+  width: 100%;
+  background-color: #282c34;
+  border-radius: 50%;
+  color: #F46001;
+}
+
+.app-movie-banner-icon-text {
+  top: 50%;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.app-movie-content {
+  margin-top: 48px;
+  padding: 0.75rem 1.5rem;
+  position: relative;
+}
+
+.app-movie-title {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  font-weight: normal;
+  color: #1f1f1f;
+}
+
+.app-movie-rating {
+  padding: 10px 0;
+}
+
+.app-movie-description {
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  font-weight: normal;
+  color: #666666;
+}
+
+.app-movie-footer {
+  width: 290px;
+  position: absolute;
+  bottom: 4px;
+  padding: 0.75rem 1.5rem;
+}
+
+.app-movie-footer-content {
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.app-user-rating {
+  cursor: pointer;
+}
+
+.app-user-action fa-icon {
+  font-size: 1.2em;
+  margin: 15px 5px;
+  cursor: pointer;
+}
+
+.app-user-action-edit {
+  color: green;
+}
+
+.app-user-action-delete {
+  color: crimson;
+}
+
 .movie-item {
-    display: grid;
-    grid-template-columns: 1fr auto auto;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
 }
 
 .movie-item fa-icon {
-    font-size: 1.5em;
-    margin: 15px 5px;
-    cursor: pointer;
+  font-size: 1.5em;
+  margin: 15px 5px;
+  cursor: pointer;
 }
 
 .movie-title {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #trash-icon {
-    color: crimson;
+  color: crimson;
 }
 
 #edit-icon {
-    color: green;
+  color: green;
 }
