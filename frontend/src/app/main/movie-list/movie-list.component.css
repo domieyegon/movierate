@@ -1,13 +1,22 @@
-.app-movie-list-row {}
+.app-movie-list-row {
+  width: 100%;
+}
+
+.app-movie-add-new {
+  width: 100%;
+  text-align: right;
+  margin-bottom: 1.5rem;
+}
 
 .app-movie-list-card {
+  display: inline-block;
   height: 384px;
   width: 338px;
   background-color: #fff;
   border-radius: 3px;
   box-shadow: rgb(31 31 31 / 12%) 0px 1px 6px, rgb(31 31 31 / 12%) 0px 1px 4px;
   position: relative;
-  margin: 0;
+  margin: 0 1.5rem 1.5rem 0;
 }
 
 .app-movie-img-wrapper {
@@ -115,6 +124,10 @@
 
 .app-user-action-delete {
   color: crimson;
+}
+
+fa-icon.orange {
+  color: orange;
 }
 
 .movie-item {

@@ -1,6 +1,14 @@
 <div class="app-movie-list-row">
 
-  <div class="app-movie-list-card">
+  <div class="app-movie-add-new">
+    <button type="button" (click)="newMovie()">
+      <fa-icon [icon]="addNew"></fa-icon>
+      <span> New Movie</span>
+    </button>
+
+  </div>
+
+  <div  *ngFor="let movie of movies" class="app-movie-list-card">
     <div class="app-movie-img-wrapper">
       <div class="app-movie-img">
         <!-- Image will go here -->
@@ -12,20 +20,16 @@
       </div>
     </span>
     <div class="app-movie-content">
-      <div class="app-movie-title">
-        Into The Bad Lands
-      </div>
+      <div class="app-movie-title">{{movie.title}}</div>
       <div class="app-movie-rating">
-        <fa-icon [icon]="faStar"></fa-icon>
-        <fa-icon [icon]="faStar"></fa-icon>
-        <fa-icon [icon]="faStar"></fa-icon>
-        <fa-icon [icon]="faStar"></fa-icon>
-        <fa-icon [icon]="faStar"></fa-icon>
-        <span> (2)</span>
+        <fa-icon [icon]="faStar"  [ngClass]="{'orange':movie.avg_ratings! > 0 }"></fa-icon>
+        <fa-icon [icon]="faStar"  [ngClass]="{'orange':movie.avg_ratings! > 1 }"></fa-icon>
+        <fa-icon [icon]="faStar"  [ngClass]="{'orange':movie.avg_ratings! > 2 }"></fa-icon>
+        <fa-icon [icon]="faStar"  [ngClass]="{'orange':movie.avg_ratings! > 3 }"></fa-icon>
+        <fa-icon [icon]="faStar"  [ngClass]="{'orange':movie.avg_ratings! > 4 }"></fa-icon>
+        <span> ({{movie.no_of_ratings}})</span>
       </div>
-      <div class="app-movie-description">
-        Land full of war and blood  Land full of war and blood  Land full of war and blood  Land full of war and blood
-      </div>
+      <div class="app-movie-description">{{movie.description}}</div>
 
     </div>
     <div class="app-movie-footer">
@@ -39,8 +43,8 @@
           <fa-icon [icon]="faStar"></fa-icon>
         </div>
         <div class="app-user-action">
-          <fa-icon class="app-user-action-edit" [icon]="edit"></fa-icon>
-          <fa-icon class="app-user-action-delete" [icon]="trash"></fa-icon>
+          <fa-icon class="app-user-action-edit" [icon]="edit" (click)="editMovie(movie)"></fa-icon>
+          <fa-icon class="app-user-action-delete" [icon]="trash" (click)="deleteMovie(movie)"></fa-icon>
         </div>
       </div>
     </div>
@@ -55,4 +59,4 @@
     <fa-icon id="trash-icon" [icon]="trash" (click)="deleteMovie(movie)"></fa-icon>
 </div>
 
-<button type="button" (click)="newMovie()">New Movie</button>
+

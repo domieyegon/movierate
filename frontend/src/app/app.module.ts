@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { MainModule } from './main/main.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   {path:'', pathMatch: 'full', redirectTo: 'auth'}
@@ -23,6 +24,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
     FontAwesomeModule,
+    BrowserAnimationsModule,
   ],
   exports: [
     RouterModule
