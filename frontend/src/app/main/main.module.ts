@@ -8,7 +8,6 @@ import { MovieFormComponent } from './movie-form/movie-form.component';
 import {ApiService} from '../api.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatDialogModule } from '@angular/material/dialog';
 
 const routes:Routes = [
   {path: 'movies', component:MainComponent}
@@ -25,7 +24,6 @@ const routes:Routes = [
     CommonModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    MatDialogModule,
     RouterModule.forRoot(routes),
   ],
   exports: [
