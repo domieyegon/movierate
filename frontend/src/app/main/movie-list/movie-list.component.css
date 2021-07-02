@@ -11,7 +11,8 @@
 .app-movie-list-card {
   display: inline-block;
   height: 384px;
-  width: 338px;
+  width: 18%;
+  min-width: 332px;
   background-color: #fff;
   border-radius: 3px;
   box-shadow: rgb(31 31 31 / 12%) 0px 1px 6px, rgb(31 31 31 / 12%) 0px 1px 4px;

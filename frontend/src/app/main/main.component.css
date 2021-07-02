@@ -10,7 +10,9 @@
 }
 .layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
-    padding: 2em 3em;
+    grid-template-columns: 1fr;
+    /* grid-gap: 20px; */
+    padding: 2em 3.6em;
+    /* text-align: center; */
+    /* width: 100%; */
 }

@@ -8,6 +8,9 @@ import { AuthModule } from './auth/auth.module';
 import { MainModule } from './main/main.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const routes: Routes = [
   {path:'', pathMatch: 'full', redirectTo: 'auth'}
@@ -25,6 +28,9 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
     FontAwesomeModule,
+    MatButtonModule,
+    MatSliderModule,
+    MatDialogModule,
   ],
   exports: [
     RouterModule

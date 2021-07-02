@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faEdit, faPlus, faStar, faTh, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { ApiService } from 'src/app/api.service';
 import { IMovie } from 'src/app/model/movie';
 
 @Component({
@@ -22,6 +23,7 @@ export class MovieListComponent implements OnInit {
 
 
   constructor(
+    private apiServive:ApiService
   ) { }
 
   movieClicked(movie:IMovie) {
@@ -33,7 +35,12 @@ export class MovieListComponent implements OnInit {
   }
 
   newMovie() {
-    this.createNewMovie.emit();
+    const movie = {
+      title: '',
+      description: ''
+    }
+    this.apiServive.openDialog(movie);
+    // this.createNewMovie.emit();
   }
 
   deleteMovie(movie:IMovie) {

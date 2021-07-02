@@ -1,10 +1,12 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from '../api.service';
 import { IMovie } from '../model/movie';
+import { MovieFormComponent } from './movie-form/movie-form.component';
 
 @Component({
   selector: 'app-main',
@@ -24,7 +26,8 @@ export class MainComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private cookieService: CookieService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) { }
 
 
@@ -39,6 +42,8 @@ export class MainComponent implements OnInit {
   }
 
   movieCreated(movie: IMovie) {
+    console.log(this.movies);
+    console.log(movie)
     this.movies.push(movie);
     this.isEditMovie = false;
   }
