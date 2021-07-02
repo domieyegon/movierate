@@ -63,9 +63,10 @@
 }
 
 .app-movie-banner-icon-text {
-  top: 50%;
   font-size: 40px;
   font-weight: bold;
+  text-transform: uppercase;
+  transform: translateY(-50%);
 }
 
 .app-movie-content {
@@ -110,7 +111,7 @@
   flex-direction: row;
 }
 
-.app-user-rating {
+.app-user-rating fa-icon {
   cursor: pointer;
 }
 
@@ -130,6 +131,11 @@
 
 fa-icon.orange {
   color: orange;
+}
+
+
+fa-icon.purple {
+  color: purple;
 }
 
 .movie-item {

@@ -22,7 +22,7 @@
     </div>
     <span class="app-movie-banner">
       <div class="app-movie-banner-icon">
-        <span class="app-movie-banner-icon-text">M</span>
+        <span class="app-movie-banner-icon-text">m</span>
       </div>
     </span>
     <div class="app-movie-content">
@@ -42,11 +42,9 @@
       <div class="app-movie-footer-content">
         <div class="app-user-rating">
           <span style="color: #F46001;">Your Rating: </span>
-          <fa-icon [icon]="faStar"></fa-icon>
-          <fa-icon [icon]="faStar"></fa-icon>
-          <fa-icon [icon]="faStar"></fa-icon>
-          <fa-icon [icon]="faStar"></fa-icon>
-          <fa-icon [icon]="faStar"></fa-icon>
+
+        <fa-icon *ngFor="let rate of [1,2,3,4,5]" [icon]="faStar" (mouseenter)="rateHover(rate, movie.id!)"
+        (mouseleave)="rateHovered = 0" (click)="rateCLicked(rate, movie.id!)" [ngClass]="{'purple':rateHovered >= rate }"></fa-icon>
         </div>
         <div class="app-user-action">
           <fa-icon class="app-user-action-edit" [icon]="edit" (click)="editMovie(movie)"></fa-icon>

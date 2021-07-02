@@ -1,3 +1,4 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faEdit, faPlus, faStar, faTh, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ApiService } from 'src/app/api.service';
@@ -21,9 +22,10 @@ export class MovieListComponent implements OnInit {
   edit = faEdit
   trash = faTrash
 
+  rateHovered = 0;
 
   constructor(
-    private apiServive:ApiService
+    private apiService:ApiService
   ) { }
 
   movieClicked(movie:IMovie) {
@@ -39,14 +41,38 @@ export class MovieListComponent implements OnInit {
       title: '',
       description: ''
     }
-    this.apiServive.openDialog(movie);
+    this.apiService.openDialog(movie);
     // this.createNewMovie.emit();
   }
+
+
+  rateHover(rate:number, movieId: number) {
+    let index = this.movies?.findIndex(val => val.id === movieId);
+
+    for (let movie of this.movies!) {
+      if (movie.id === movieId) {
+        console.log(movie);
+        this.rateHovered = rate;
+      }
+    }
+   }
+
+   rateCLicked(rate:number, movieId: number) {
+     this.apiService.rateMovie(rate, movieId).subscribe((res: HttpResponse<IMovie>)=>(this.getMovies(), console.log(res)));
+   }
 
   deleteMovie(movie:IMovie) {
     this.deletedMovie.emit(movie);
   }
 
-  ngOnInit(): void {}
+  getMovies() {
+    this.apiService.getMovies().subscribe((res: HttpResponse<IMovie[]>) =>(
+      this.movies = res.body || []
+    ));
+  }
+
+  ngOnInit(): void {
+
+  }
 
 }
