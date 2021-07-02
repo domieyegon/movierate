@@ -9,8 +9,9 @@
 .app-nav {
   background-color: #282c34;
   padding: 5px 3em;
-  /* display: flex;
-  flex-direction: row; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 @media (max-width: 768px) {
   .app-nav {
