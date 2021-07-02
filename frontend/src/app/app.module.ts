@@ -19,12 +19,12 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AuthModule,
     MainModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
     FontAwesomeModule,
-    BrowserAnimationsModule,
   ],
   exports: [
     RouterModule
