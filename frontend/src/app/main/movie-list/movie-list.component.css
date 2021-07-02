@@ -6,6 +6,7 @@
   width: 100%;
   text-align: right;
   margin-bottom: 1.5rem;
+  padding: 0 0.8rem;
 }
 
 .app-movie-list-card {
@@ -17,7 +18,7 @@
   border-radius: 3px;
   box-shadow: rgb(31 31 31 / 12%) 0px 1px 6px, rgb(31 31 31 / 12%) 0px 1px 4px;
   position: relative;
-  margin: 0 1.5rem 1.5rem 0;
+  margin: 0 0.8rem 1.5rem 0.8rem;
 }
 
 .app-movie-img-wrapper {
@@ -92,7 +93,7 @@
 }
 
 .app-movie-footer {
-  width: 290px;
+  width: 100%;
   position: absolute;
   bottom: 4px;
   padding: 0.75rem 1.5rem;
