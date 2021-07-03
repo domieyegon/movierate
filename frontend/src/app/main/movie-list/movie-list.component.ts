@@ -72,7 +72,7 @@ export class MovieListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.getMovies();
   }
 
 }

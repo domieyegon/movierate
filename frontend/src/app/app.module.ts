@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 
 const routes: Routes = [
   {path:'', pathMatch: 'full', redirectTo: 'auth'}
@@ -31,6 +32,7 @@ const routes: Routes = [
     MatButtonModule,
     MatSliderModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     RouterModule

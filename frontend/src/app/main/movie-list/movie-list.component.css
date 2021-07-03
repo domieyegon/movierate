@@ -9,6 +9,20 @@
   padding: 0 0.8rem;
 }
 
+.app-movie-spinner-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: red;
+}
+
+.app-movie-spinner-wrapper mat-spinner {
+  text-align: center;
+  padding: 2rem;
+  color: #F46001;
+  margin:0 auto;
+}
+
 .app-movie-list-card {
   display: inline-block;
   height: 384px;

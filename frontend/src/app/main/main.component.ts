@@ -81,7 +81,7 @@ export class MainComponent implements OnInit {
     if (!token) {
       this.router.navigate(['/auth']);
     } else {
-      this.apiService.getMovies().subscribe((res: HttpResponse<IMovie[]>) => (this.movies = res.body || []));
+      // this.apiService.getMovies().subscribe((res: HttpResponse<IMovie[]>) => (this.movies = res.body || []));
     }
   }
 
