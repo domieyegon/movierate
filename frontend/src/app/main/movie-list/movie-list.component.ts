@@ -33,7 +33,8 @@ export class MovieListComponent implements OnInit {
   }
 
   editMovie(movie:IMovie) {
-    this.editedMovie.emit(movie);
+    this.apiService.openDialog(movie);
+    // this.editedMovie.emit(movie);
   }
 
   newMovie() {
@@ -52,7 +53,9 @@ export class MovieListComponent implements OnInit {
     for (let movie of this.movies!) {
       if (movie.id === movieId) {
         console.log(movie);
-        this.rateHovered = rate;
+
+        movie.user_rating = rate;
+        // this.rateHovered = rate;
       }
     }
    }
@@ -66,9 +69,9 @@ export class MovieListComponent implements OnInit {
   }
 
   getMovies() {
-    this.apiService.getMovies().subscribe((res: HttpResponse<IMovie[]>) =>(
-      this.movies = res.body || []
-    ));
+    this.apiService.getMovies().subscribe((res: HttpResponse<IMovie[]>) =>{
+      this.movies = res.body || [];
+  });
   }
 
   ngOnInit(): void {

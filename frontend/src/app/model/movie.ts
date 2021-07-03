@@ -4,6 +4,7 @@ export interface IMovie {
     description?: string;
     no_of_ratings?: number;
     avg_ratings?: number;
+    user_rating?: number;
 }
 
 export class Movie implements IMovie {
@@ -13,5 +14,6 @@ export class Movie implements IMovie {
         public description?: string,
         public no_of_ratings?: number,
         public avg_ratings?: number,
+        public user_rating: number = 0,
     ) { }
 }

@@ -33,7 +33,8 @@ export class MovieFormComponent implements OnInit {
     private dialogRef: MatDialogRef<MovieFormComponent>,
     @Inject(MAT_DIALOG_DATA) public movieData: IMovie
   ) {
-
+    this.id= movieData.id;
+    console.log(this.id);
     this.movieForm = new FormGroup({
       title: new FormControl(movieData.title),
       description: new FormControl(movieData.description)
@@ -45,7 +46,7 @@ export class MovieFormComponent implements OnInit {
     if(this.id == undefined){
       this.apiService.createMovie(this.movieForm.value.title, this.movieForm.value.description).subscribe((res: HttpResponse<IMovie>)=>( this.movieCreated.emit(res.body!), this.dialogRef.close(), console.log(res)));
     }else{
-      this.apiService.updateMovie(this.id!, this.movieForm.value.title, this.movieForm.value.description).subscribe((res: HttpResponse<IMovie>)=>(this.movieUpdated.emit(res.body!), console.log(res)));
+      this.apiService.updateMovie(this.id!, this.movieForm.value.title, this.movieForm.value.description).subscribe((res: HttpResponse<IMovie>)=>(this.movieUpdated.emit(res.body!), this.dialogRef.close(), console.log(res)));
     }
 
     console.log(this.movieForm.value);

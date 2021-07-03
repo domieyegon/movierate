@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import '../node_modules/bootstrap/dist/css/bootstrap.css';
-
 html, body {
   height: 100%;
 }
@@ -92,4 +91,8 @@ input[type=submit]:hover {
   padding: 0.1px 10px;
   margin: 2rem 0;
   border-radius: 8px;
+}
+
+.mat-dialog-container {
+  width: 600px !important;
 }

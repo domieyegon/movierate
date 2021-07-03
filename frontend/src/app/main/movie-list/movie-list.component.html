@@ -48,7 +48,7 @@
           <span style="color: #F46001;">Your Rating: </span>
 
         <fa-icon *ngFor="let rate of [1,2,3,4,5]" [icon]="faStar" (mouseenter)="rateHover(rate, movie.id!)"
-        (mouseleave)="rateHovered = 0" (click)="rateCLicked(rate, movie.id!)" [ngClass]="{'purple':rateHovered >= rate }"></fa-icon>
+        (mouseleave)="movie.user_rating = 0" (click)="rateCLicked(rate, movie.id!)" [ngClass]="{'purple':movie.user_rating! >= rate }"></fa-icon>
         </div>
         <div class="app-user-action">
           <fa-icon class="app-user-action-edit" [icon]="edit" (click)="editMovie(movie)"></fa-icon>
