@@ -24,7 +24,7 @@ body {
     border-color: #ffffff;
 } */
 
-button {
+.button-primary {
   font-family: 'Fascinate Inline', cursive;
   font-size: 1.2em;
   appearance: none;
@@ -42,14 +42,38 @@ button {
   outline: none;
 }
 
-button:hover {
+.button-primary:hover {
   box-shadow: 0 0 2em rgba(white, .3);
 }
 
-button:disabled {
+.button-primary:disabled {
   cursor: not-allowed;
   background: #eb946c !important;
   color: #ccc
+}
+
+.button-secondary {
+  font-family: 'Fascinate Inline', cursive;
+  font-size: 1.2em;
+  appearance: none;
+  /* background: linear-gradient(to bottom, #F46001, #E14802); */
+  background: #FFF;
+  -webkit-tap-highlight-color: transparent;
+  border: none;
+  color: #000;
+  border-radius: 8px;
+  padding: .4rem 1.5em;
+  overflow: hidden;
+  user-select: none;
+  cursor: pointer;
+  z-index: 1;
+  box-shadow: 0 0 1em rgba(white, .2);
+  transition: transform .1s cubic-bezier(.5, 0, .5, 1), box-shadow .2s;
+  outline: none;
+}
+
+.button-secondary:hover {
+  background: #ddd;
 }
 
 input[type=text], [type=password], select, textarea {
@@ -93,6 +117,6 @@ input[type=submit]:hover {
   border-radius: 8px;
 }
 
-.mat-dialog-container {
+/* .mat-dialog-container {
   width: 600px !important;
-}
+} */

@@ -26,7 +26,7 @@ export class ApiService {
   ) {}
 
   openDialog(movie: IMovie): Observable<IMovie> {
-    const dialogRef = this.dialog.open(MovieFormComponent, { data: movie });
+    const dialogRef = this.dialog.open(MovieFormComponent, { data: movie, width: '600px' });
 
     return dialogRef.afterClosed();
 

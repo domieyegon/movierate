@@ -9,6 +9,8 @@ import {ApiService} from '../api.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MovieDeleteDialogComponent } from './movie-delete-dialog/movie-delete-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const routes:Routes = [
   {path: 'movies', component:MainComponent}
@@ -20,6 +22,7 @@ const routes:Routes = [
     MovieListComponent,
     MovieDetailsComponent,
     MovieFormComponent,
+    MovieDeleteDialogComponent
   ],
   imports: [
     CommonModule,
@@ -27,6 +30,7 @@ const routes:Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     MatProgressSpinnerModule,
+    MatDialogModule
   ],
   exports: [
     RouterModule

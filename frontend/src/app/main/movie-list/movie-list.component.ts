@@ -1,8 +1,10 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { faEdit, faPlus, faStar, faTh, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ApiService } from 'src/app/api.service';
 import { IMovie } from 'src/app/model/movie';
+import { MovieDeleteDialogComponent } from '../movie-delete-dialog/movie-delete-dialog.component';
 
 @Component({
   selector: 'app-movie-list',
@@ -25,7 +27,8 @@ export class MovieListComponent implements OnInit {
   rateHovered = 0;
 
   constructor(
-    private apiService:ApiService
+    private apiService:ApiService,
+    private dialog:MatDialog,
   ) { }
 
   movieClicked(movie:IMovie) {
@@ -65,7 +68,7 @@ export class MovieListComponent implements OnInit {
    }
 
   deleteMovie(movie:IMovie) {
-    this.deletedMovie.emit(movie);
+    this.dialog.open(MovieDeleteDialogComponent, {data: movie, maxWidth: '450px'});
   }
 
   getMovies() {
