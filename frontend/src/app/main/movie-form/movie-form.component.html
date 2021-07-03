@@ -1,4 +1,7 @@
 <form [formGroup]="movieForm" (ngSubmit)="saveMovie()">
+  <h2 *ngIf="!id">Add new movie</h2>
+  <h2 *ngIf="id">Update movie</h2>
+  <hr>
     <label for="title">Title</label><br>
     <input type="text" placeholder="Enter movie title" formControlName="title"><br><br>
 

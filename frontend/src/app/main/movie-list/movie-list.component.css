@@ -2,9 +2,12 @@
   width: 100%;
 }
 
-.app-movie-add-new {
+.app-movie-header {
   width: 100%;
-  text-align: right;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* text-align: right; */
   margin-bottom: 1.5rem;
   padding: 0 0.8rem;
 }
@@ -20,7 +23,7 @@
   text-align: center;
   padding: 2rem;
   color: #F46001;
-  margin:0 auto;
+  margin: 0 auto;
 }
 
 .app-movie-list-card {
@@ -146,7 +149,6 @@
 fa-icon.orange {
   color: orange;
 }
-
 
 fa-icon.purple {
   color: purple;

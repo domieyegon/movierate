@@ -12,7 +12,7 @@
     <label for="password">Password</label><br>
     <input type="password" placeholder="Enter Password" formControlName="password"><br><br>
 
-    <button class="auth-btn" type="submit" [disabled]="formDisabled()">
+    <button class="button-primary auth-btn" type="submit" [disabled]="formDisabled()">
         <span *ngIf="!registerMode">Login</span>
         <span *ngIf="registerMode">Register</span>
     </button>
