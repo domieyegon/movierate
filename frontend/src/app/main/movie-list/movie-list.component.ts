@@ -74,6 +74,18 @@ export class MovieListComponent implements OnInit {
   getMovies() {
     this.apiService.getMovies().subscribe((res: HttpResponse<IMovie[]>) =>{
       this.movies = res.body || [];
+      for (const movie of this.movies) {
+
+        if (movie.title!.length > 25) {
+          movie.title = movie.title?.substring(0,26)+ "...";
+        }
+
+        if (movie.description!.length > 139) {
+          movie.description = movie.description?.substring(0,130)+ "...";
+        }
+
+        movie.logo = movie.title?.charAt(0);
+      }
   });
   }
 
