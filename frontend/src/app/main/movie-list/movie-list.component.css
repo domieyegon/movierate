@@ -7,9 +7,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* text-align: right; */
-  margin-bottom: 1.5rem;
-  padding: 0 0.8rem;
+  align-items: flex-end;
+  padding: 0.8rem;
 }
 
 .app-movie-spinner-wrapper {
@@ -29,13 +28,56 @@
 .app-movie-list-card {
   display: inline-block;
   height: 384px;
-  width: 18%;
-  min-width: 332px;
+  width: calc(20% - 25.6px);
+  min-width: 312px;
   background-color: #fff;
   border-radius: 3px;
   box-shadow: rgb(31 31 31 / 12%) 0px 1px 6px, rgb(31 31 31 / 12%) 0px 1px 4px;
   position: relative;
-  margin: 0 0.8rem 1.5rem 0.8rem;
+  margin: 0.8rem;
+}
+
+@media (max-width:708px){
+  .app-movie-header {
+    padding: 0.8rem 0;
+  }
+
+  .app-movie-list-card {
+    width: 100%;
+    margin: 0.8rem 0;
+  }
+}
+
+
+
+@media (min-width:709px) and (max-width:768px){
+  .app-movie-list-card {
+    width: calc(50% - 25.6px);
+    margin: 0.8rem;
+  }
+}
+
+@media (min-width:769px) and (max-width:1126px){
+  .app-movie-list-card {
+    width: calc(50% - 25.6px);
+    margin: 0.8rem;
+  }
+}
+
+
+@media (min-width:1127px) and (max-width:1464px){
+  .app-movie-list-card {
+    width: calc(33.33% - 25.6px);
+    margin: 0.8rem;
+  }
+}
+
+
+@media (min-width:1465px) and (max-width:1803px){
+  .app-movie-list-card {
+    width: calc(25% - 25.6px);
+    margin: 0.8rem;
+  }
 }
 
 .app-movie-img-wrapper {

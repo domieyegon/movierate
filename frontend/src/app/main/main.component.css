@@ -1,18 +1,25 @@
 .logout-wrapper {
-    float: right;
-    padding: 0 3em;
+  float: right;
+  padding: 0 3em;
 }
 
 .logout-wrapper fa-icon {
-    font-size: 2em;
-    cursor: pointer;
-    color: #F46001;
+  font-size: 2em;
+  cursor: pointer;
+  color: #F46001;
 }
+
 .layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    /* grid-gap: 20px; */
-    padding: 2em 3.6em;
-    /* text-align: center; */
-    /* width: 100%; */
+  display: grid;
+  grid-template-columns: 1fr;
+  /* grid-gap: 20px; */
+  padding: 2em 3.6em;
+  /* text-align: center; */
+  /* width: 100%; */
+}
+
+@media(max-width:791px) {
+  .layout {
+    padding: 2em 1em;
+  }
 }

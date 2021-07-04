@@ -4,7 +4,7 @@
     <span *ngIf="registerMode">REGISTER</span>
   </div>
   <div *ngIf="errorFlag" class="alert alert-danger" role="alert" >
-    <p>{{errorMessage}}</p>
+    <span>{{errorMessage}}</span>
   </div>
     <label for="title">Username</label><br>
     <input type="text" placeholder="Enter Username" formControlName="username"><br><br>
