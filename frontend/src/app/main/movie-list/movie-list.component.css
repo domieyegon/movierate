@@ -152,6 +152,7 @@
   line-height: 1.5rem;
   font-weight: normal;
   color: #666666;
+  word-wrap:break-word;
 }
 
 .app-movie-footer {

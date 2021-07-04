@@ -55,9 +55,8 @@ export class MovieListComponent implements OnInit {
 
     for (let movie of this.movies!) {
       if (movie.id === movieId) {
-        console.log(movie);
 
-        movie.user_rating = rate;
+        movie.user_rating_temp = rate;
         // this.rateHovered = rate;
       }
     }
@@ -76,12 +75,16 @@ export class MovieListComponent implements OnInit {
       this.movies = res.body || [];
       for (const movie of this.movies) {
 
-        if (movie.title!.length > 25) {
-          movie.title = movie.title?.substring(0,26)+ "...";
+        if (movie.title!.length > 26) {
+          movie.title_temp = movie.title?.substring(0,26)+ "...";
+        } else {
+          movie.title_temp = movie.title;
         }
 
-        if (movie.description!.length > 139) {
-          movie.description = movie.description?.substring(0,130)+ "...";
+        if (movie.description!.length > 100) {
+          movie.description_temp = movie.description?.substring(0,90)+ "...";
+        } else {
+          movie.description_temp = movie.description;
         }
 
         movie.logo = movie.title?.charAt(0);

@@ -12,4 +12,8 @@ export class AppComponent {
 
   faLogout = faSignOutAlt
 
+  logout() {
+
+  }
+
 }

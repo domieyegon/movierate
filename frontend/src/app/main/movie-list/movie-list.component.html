@@ -32,7 +32,7 @@
       </div>
     </span>
     <div class="app-movie-content">
-      <div class="app-movie-title">{{movie.title}}</div>
+      <div class="app-movie-title">{{movie.title_temp}}</div>
       <div class="app-movie-rating">
         <fa-icon [icon]="faStar"  [ngClass]="{'orange':movie.avg_ratings! > 0 }"></fa-icon>
         <fa-icon [icon]="faStar"  [ngClass]="{'orange':movie.avg_ratings! > 1 }"></fa-icon>
@@ -41,7 +41,7 @@
         <fa-icon [icon]="faStar"  [ngClass]="{'orange':movie.avg_ratings! > 4 }"></fa-icon>
         <span> ({{movie.no_of_ratings}})</span>
       </div>
-      <div class="app-movie-description">{{movie.description}}</div>
+      <div class="app-movie-description">{{movie.description_temp}}</div>
 
     </div>
     <div class="app-movie-footer">
@@ -50,7 +50,7 @@
           <span style="color: #F46001;">Your Rating: </span>
 
         <fa-icon *ngFor="let rate of [1,2,3,4,5]" [icon]="faStar" (mouseenter)="rateHover(rate, movie.id!)"
-        (mouseleave)="movie.user_rating = 0" (click)="rateCLicked(rate, movie.id!)" [ngClass]="{'purple':movie.user_rating! >= rate }"></fa-icon>
+        (mouseleave)="movie.user_rating_temp = movie.user_rating" (click)="rateCLicked(rate, movie.id!)" [ngClass]="{'purple':movie.user_rating_temp! >= rate }"></fa-icon>
         </div>
         <div class="app-user-action">
           <fa-icon class="app-user-action-edit" [icon]="edit" (click)="editMovie(movie)"></fa-icon>
