@@ -28,7 +28,7 @@
 }
 
 .app-movie-list-card {
-  display: inline-block;
+  /* display: inline-block; */
   height: 384px;
   width: calc(20% - 25.6px);
   min-width: 312px;
