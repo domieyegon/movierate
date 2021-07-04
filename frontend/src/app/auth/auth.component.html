@@ -11,24 +11,31 @@
     <span *ngIf="!registerMode">LOGIN</span>
     <span *ngIf="registerMode">REGISTER</span>
   </div>
-  <div *ngIf="errorFlag" class="alert alert-danger" role="alert" >
+  <div *ngIf="errorFlag" class="alert alert-danger" role="alert">
     <span>{{errorMessage}}</span>
   </div>
-    <label for="title">Username</label><br>
-    <input type="text" placeholder="Enter Username" formControlName="username"><br><br>
+  <label for="title">Username</label><br>
+  <input type="text" placeholder="Enter Username" formControlName="username"><br><br>
 
-    <label for="password">Password</label><br>
-    <input type="password" placeholder="Enter Password" formControlName="password"><br><br>
+  <label for="password">Password</label><br>
+  <input type="password" placeholder="Enter Password" formControlName="password"><br><br>
 
-    <button class="button-primary auth-btn" type="submit" [disabled]="formDisabled()">
-        <span *ngIf="!registerMode">Login</span>
-        <span *ngIf="registerMode">Register</span>
-    </button>
-    <br>
-    <br>
-    <div class="info-link-wrapper">
-      <span *ngIf="!registerMode">Don't have an account? <span class="info-link" (click)="registerMode = true"> Register here</span> </span>
-      <span *ngIf="registerMode">Already have an account? <span class="info-link" (click)="registerMode = false"> Login here</span></span>
-    </div>
+  <button *ngIf="!loading" class="button-primary auth-btn" type="submit" [disabled]="formDisabled()">
+    <span *ngIf="!registerMode">Login</span>
+    <span *ngIf="registerMode">Register</span>
+  </button>
+
+  <div *ngIf="loading" class="app-movie-spinner">
+    <!-- <div class="login-spinner">Loading...</div> -->
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+  </div>
+  <!-- <br>
+  <br> -->
+  <div class="info-link-wrapper">
+    <span *ngIf="!registerMode">Don't have an account? <span class="info-link" (click)="registerMode = true"> Register
+        here</span> </span>
+    <span *ngIf="registerMode">Already have an account? <span class="info-link" (click)="registerMode = false"> Login
+        here</span></span>
+  </div>
 
 </form>

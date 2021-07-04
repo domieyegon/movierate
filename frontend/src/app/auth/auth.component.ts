@@ -15,6 +15,7 @@ import { ILogin } from '../model/login';
 export class AuthComponent implements OnInit {
 
   registerMode = false;
+  loading = false;
 
   film = faFilm
 
@@ -51,6 +52,7 @@ export class AuthComponent implements OnInit {
   }
 
   loginUser() {
+    this.loading= true;
     this.apiService.loginUser(this.authForm.value).subscribe(
       (res: HttpResponse<ILogin>) => (
         this.cookieService.set('mr-token',
@@ -58,11 +60,13 @@ export class AuthComponent implements OnInit {
         this.router.navigate(['/movies']),
         console.log(res),
         this.errorFlag = false,
-        this.apiService.setloggedIn(true)
+        this.apiService.setloggedIn(true),
+        this.loading= false
         ),
         err=> {
           this.errorFlag = true;
           this.errorMessage = "Invalid username or password!";
+          this.loading= false;
         });
   }
 
