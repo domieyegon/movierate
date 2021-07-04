@@ -1,4 +1,12 @@
 <form class="login-form" [formGroup]="authForm" (ngSubmit)="login()">
+  <div class="app-logo-container">
+    <span class="app-logo">
+      <fa-icon [icon]="film"></fa-icon>
+      <span>Movie Rater</span>
+    </span>
+    <span class="app-trademaker">TM</span>
+  </div>
+
   <div class="login-title">
     <span *ngIf="!registerMode">LOGIN</span>
     <span *ngIf="registerMode">REGISTER</span>

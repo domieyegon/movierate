@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { IMovie } from './model/movie';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ILogin } from './model/login';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../environments/environment';
@@ -24,6 +24,20 @@ export class ApiService {
     private cookieService: CookieService,
     private dialog: MatDialog,
   ) {}
+
+  private auth = new BehaviorSubject<boolean>(false);
+  userLogin = this.auth.asObservable();
+
+  private operation = new BehaviorSubject<boolean>(false);
+  operationSuccess = this.operation.asObservable();
+
+  setloggedIn(isloggedIn: boolean) {
+    this.auth.next(isloggedIn);
+  }
+
+  setOperationSuccess(succes: boolean) {
+    this.operation.next(succes);
+  }
 
   openDialog(movie: IMovie): Observable<IMovie> {
     const dialogRef = this.dialog.open(MovieFormComponent, { data: movie, width: '600px' });

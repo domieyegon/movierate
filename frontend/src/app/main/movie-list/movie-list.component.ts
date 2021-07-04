@@ -92,8 +92,19 @@ export class MovieListComponent implements OnInit {
   });
   }
 
+
+  getOperationStatus(){
+    this.apiService.operationSuccess.subscribe(success => {
+      console.log(success);
+      if (success) {
+        this.getMovies();
+       }
+    });
+  }
+
   ngOnInit(): void {
     this.getMovies();
+    this.getOperationStatus();
   }
 
 }

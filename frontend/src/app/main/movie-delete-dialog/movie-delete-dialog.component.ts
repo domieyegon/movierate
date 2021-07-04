@@ -25,9 +25,10 @@ export class MovieDeleteDialogComponent implements OnInit {
    }
 
    deleteMovie() {
-     this.apiService.deleteMovie(77).subscribe((res:HttpResponse<IMovie>)=>{
+     this.apiService.deleteMovie(this.movie.id!).subscribe((res:HttpResponse<IMovie>)=>{
        console.log(res.body);
        this.dialogRef.close();
+       this.apiService.setOperationSuccess(true);
       //  this.movieDeleted.emit(res.body!);
      })
    }
