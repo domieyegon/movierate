@@ -10,8 +10,12 @@
     <div class="text-area-wrapper">
         <textarea type="text" placeholder="Enter movie description" formControlName="description"></textarea><br><br>
     </div>
-    <button class="button-primary" type="submit" [disabled]="formDisabled()">
+    <mat-dialog-actions align="end">
+      <button class="button-secondary app-action-btn" mat-button mat-dialog-close>Cancel</button>
+      <button class="button-primary" type="submit" [disabled]="formDisabled()">
         <span *ngIf="!id">Create</span>
         <span *ngIf="id">Update</span>
     </button>
+    </mat-dialog-actions>
+
 </form>
