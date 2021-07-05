@@ -11,6 +11,8 @@ import { IMovie } from 'src/app/model/movie';
 })
 export class MovieDeleteDialogComponent implements OnInit {
 
+  loading = false;
+
   @Output() movieDeleted = new EventEmitter<IMovie>();
 
   movie!:IMovie
@@ -25,10 +27,12 @@ export class MovieDeleteDialogComponent implements OnInit {
    }
 
    deleteMovie() {
+     this.loading =true;
      this.apiService.deleteMovie(this.movie.id!).subscribe((res:HttpResponse<IMovie>)=>{
        console.log(res.body);
        this.dialogRef.close();
        this.apiService.setOperationSuccess(true);
+       this.loading = false;
       //  this.movieDeleted.emit(res.body!);
      })
    }

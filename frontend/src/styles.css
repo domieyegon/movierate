@@ -195,6 +195,7 @@ input[type=submit]:hover {
   height: 25px;
 }
 .lds-ellipsis div {
+  top: 12px;
   position: absolute;
   width: 13px;
   height: 13px;

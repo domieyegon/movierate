@@ -12,6 +12,8 @@ import { IMovie } from 'src/app/model/movie';
 })
 export class MovieFormComponent implements OnInit {
 
+  loading = false;
+
   movieForm:any
   id: number | undefined;
 
@@ -43,10 +45,11 @@ export class MovieFormComponent implements OnInit {
    }
 
   saveMovie() {
+    this.loading = true;
     if(this.id == undefined){
-      this.apiService.createMovie(this.movieForm.value.title, this.movieForm.value.description).subscribe((res: HttpResponse<IMovie>)=>( this.movieCreated.emit(res.body!), this.apiService.setOperationSuccess(true), this.dialogRef.close(), console.log(res)));
+      this.apiService.createMovie(this.movieForm.value.title, this.movieForm.value.description).subscribe((res: HttpResponse<IMovie>)=>( this.movieCreated.emit(res.body!), this.apiService.setOperationSuccess(true), this.dialogRef.close(), this.loading = false, console.log(res)));
     }else{
-      this.apiService.updateMovie(this.id!, this.movieForm.value.title, this.movieForm.value.description).subscribe((res: HttpResponse<IMovie>)=>(this.movieUpdated.emit(res.body!), this.apiService.setOperationSuccess(true), this.dialogRef.close(), console.log(res)));
+      this.apiService.updateMovie(this.id!, this.movieForm.value.title, this.movieForm.value.description).subscribe((res: HttpResponse<IMovie>)=>(this.movieUpdated.emit(res.body!), this.apiService.setOperationSuccess(true), this.dialogRef.close(), this.loading = false, console.log(res)));
     }
 
     console.log(this.movieForm.value);

@@ -2,6 +2,10 @@
 <mat-dialog-content>Do you want to do delete <b>{{movie?.title}}</b>?</mat-dialog-content>
 <mat-dialog-actions align="end">
   <button class="button-secondary app-action-btn" mat-button mat-dialog-close>Cancel</button>
-  <button mat-raisedbutton  class="button-primary app-action-btn" (click)="deleteMovie()">Delete</button>
+  <button *ngIf="!loading"  class="button-primary app-action-btn" (click)="deleteMovie()">Delete</button>
+
+  <div *ngIf="loading" class="app-movie-spinner">
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+  </div>
 </mat-dialog-actions>
 
